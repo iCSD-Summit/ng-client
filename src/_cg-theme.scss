@@ -109,8 +109,75 @@ $ea-cg-blue-palette: (
   )
 );
 
+$ea-zest-green-palette: (
+  50 : #f2fce3,
+  100 : #dff8b9,
+  200 : #caf38b,
+  300 : #b5ee5c,
+  400 : #a5ea39,
+  500 : #95e616,
+  600 : #8de313,
+  700 : #82df10,
+  800 : #78db0c,
+  900 : #67d506,
+  A100 : #fefffd,
+  A200 : #e0ffca,
+  A400 : #c3ff97,
+  A700 : #b4ff7e,
+  contrast: (
+    50 : #000000,
+    100 : #000000,
+    200 : #000000,
+    300 : #000000,
+    400 : #000000,
+    500 : #000000,
+    600 : #000000,
+    700 : #000000,
+    800 : #000000,
+    900 : #000000,
+    A100 : #000000,
+    A200 : #000000,
+    A400 : #000000,
+    A700 : #000000,
+  )
+);
+
+$ea-deep-purple-palette: (
+  50 : #e6e2e7,
+  100 : #bfb6c4,
+  200 : #95859d,
+  300 : #6b5476,
+  400 : #4b2f58,
+  500 : #2b0a3b,
+  600 : #260935,
+  700 : #20072d,
+  800 : #1a0526,
+  900 : #100319,
+  A100 : #b258ff,
+  A200 : #9a25ff,
+  A400 : #8200f1,
+  A700 : #7400d7,
+  contrast: (
+    50 : #000000,
+    100 : #000000,
+    200 : #000000,
+    300 : #ffffff,
+    400 : #ffffff,
+    500 : #ffffff,
+    600 : #ffffff,
+    700 : #ffffff,
+    800 : #ffffff,
+    900 : #ffffff,
+    A100 : #000000,
+    A200 : #ffffff,
+    A400 : #ffffff,
+    A700 : #ffffff,
+  )
+);
+
+
 $event-app-primary: mat-palette($ea-vibrant-blue-palette);
-$event-app-accent: mat-palette($ea-cg-blue-palette);
+$event-app-accent: mat-palette($ea-zest-green-palette);
 
 // The warn palette is optional (defaults to red).
 $event-app-warn: mat-palette($ea-tech-red-palette);
