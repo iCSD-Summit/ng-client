@@ -11,7 +11,8 @@ import {MatButtonModule, MatIconModule, MatToolbarModule} from '@angular/materia
   declarations: [HeaderComponent],
   exports: [
     CommonModule,
-    HeaderComponent
+    HeaderComponent,
+    MatIconModule
   ]
 })
 export class SharedModule {
