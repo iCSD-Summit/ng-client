@@ -10,17 +10,11 @@ export class NavService {
   constructor() {
     this._navItems = [];
 
-    const navItem1: NavItem = new NavItem('Info', '/');
+    const navItem1: NavItem = new NavItem('Venue', '/venue');
     this._navItems.push(navItem1);
 
-    const navItem2: NavItem = new NavItem('Agenda', '/');
+    const navItem2: NavItem = new NavItem('Agenda', '/agenda');
     this._navItems.push(navItem2);
-
-    const navItem3: NavItem = new NavItem('Sponsors', '/');
-    this._navItems.push(navItem3);
-
-    const navItem4: NavItem = new NavItem('Extras', '/');
-    this._navItems.push(navItem4);
 
   }
 
