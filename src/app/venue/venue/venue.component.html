@@ -1,0 +1,14 @@
+<section class="location">
+  <p class="mat-subheading-2">Hotel Mercure</p>
+  <div class="address mat-body-1">
+    <p>pl. Dominikański 1</p>
+    <p>50-159 WROCŁAW</p>
+    <p>POLAND</p>
+    <p><a href="tel:+48-71-3232700"><mat-icon>phone</mat-icon> +48 71 3232700</a></p>
+  </div>
+</section>
+<agm-map [latitude]="lat" [longitude]="lng">
+  <agm-marker [latitude]="lat" [longitude]="lng">
+    <agm-info-window>Hotel Mercure Wrocław</agm-info-window>
+  </agm-marker>
+</agm-map>
