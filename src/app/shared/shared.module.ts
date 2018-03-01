@@ -1,18 +1,16 @@
-import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import { HeaderComponent } from './header/header.component';
-import {MatButtonModule, MatIconModule, MatToolbarModule} from '@angular/material';
+import {NgModule} from "@angular/core";
+import {CommonModule} from "@angular/common";
+import {CustomMaterialModule} from "./custom-material.module";
 
 @NgModule({
   imports: [
     CommonModule,
-    MatToolbarModule, MatIconModule, MatButtonModule
+    CustomMaterialModule
   ],
-  declarations: [HeaderComponent],
+  declarations: [],
   exports: [
     CommonModule,
-    HeaderComponent,
-    MatIconModule
+    CustomMaterialModule
   ]
 })
 export class SharedModule {

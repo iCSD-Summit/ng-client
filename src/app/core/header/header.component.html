@@ -1,8 +1,8 @@
-<mat-toolbar color="accent">
-  <button mat-icon-button>
+<mat-toolbar class="ea-toolbar" color="accent">
+  <button mat-icon-button (click)="onMenuClick()">
     <mat-icon>menu</mat-icon>
   </button>
-  <h1 class="app-name">
+  <h1 class="app-name mat-headline">
     <ng-content></ng-content>
   </h1>
   <span class="fill-remaining-space"></span>

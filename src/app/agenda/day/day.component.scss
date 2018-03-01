@@ -1,0 +1,82 @@
+@import '../../../variables';
+
+.ea-schedule-table {
+  width: 100%;
+
+  th {
+    font-weight: normal;
+    text-align: left;
+  }
+
+  th, td {
+    padding: 0.8em 1.2em;
+    vertical-align: top;
+  }
+
+  .time {
+    background: $ea-grey;
+  }
+
+  .break-row {
+    background: $ea-grey;
+  }
+
+  .time-slot {
+    .title {
+      margin: 0;
+      font-weight: normal;
+    }
+
+    .presenter {
+      margin: 0;
+      padding-top: 0.4em;
+      font-size: 0.8em;
+    }
+
+    .details {
+      margin: 0;
+      padding-top: 0.4em;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      font-size: 0.8em;
+
+      .event-detail {
+        margin-right: 1em;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        mat-icon {
+          font-size: 20px;
+          height: 20px;
+          width: 20px;
+        }
+
+        .icon-label {
+          margin-left: 0.3em;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .ea-schedule-table {
+    thead, tbody, th, td, tr {
+      display: block;
+    }
+
+    thead {
+      display: none;
+    }
+
+    tr {
+      border-bottom: 0.5em solid $ea-white;
+    }
+
+    .time, .time-slot {
+      border-bottom: 0.1em solid $ea-white;
+    }
+  }
+}

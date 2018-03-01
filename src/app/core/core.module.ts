@@ -1,10 +1,14 @@
-import {NgModule, Optional, SkipSelf} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {RouterModule} from '@angular/router';
-import {DayComponent} from '../agenda/day/day.component';
-import {VenueComponent} from '../venue/venue/venue.component';
-import {AgmCoreModule} from '@agm/core';
+import {NgModule, Optional, SkipSelf} from "@angular/core";
+import {CommonModule} from "@angular/common";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {RouterModule} from "@angular/router";
+import {SidenavComponent} from "./sidenav/sidenav.component";
+import {HeaderComponent} from "./header/header.component";
+import {CustomMaterialModule} from "../shared/custom-material.module";
+import {NavService} from "./nav.service";
+import {AgendaComponent} from "../agenda/agenda.component";
+import {VenueComponent} from "../venue/venue/venue.component";
+import {AgmCoreModule} from "@agm/core";
 
 @NgModule({
   imports: [
@@ -15,18 +19,20 @@ import {AgmCoreModule} from '@agm/core';
     }),
     RouterModule.forRoot([
       {
-        path: 'day',
-        component: DayComponent
+        path: 'agenda',
+        component: AgendaComponent
       },
       {
         path: 'venue',
         component: VenueComponent
       },
       {path: '', redirectTo: '/venue', pathMatch: 'full'}
-    ])
+    ]),
+    CustomMaterialModule
   ],
-  declarations: [],
-  exports: [RouterModule]
+  declarations: [SidenavComponent, HeaderComponent],
+  exports: [RouterModule, SidenavComponent, HeaderComponent],
+  providers: [NavService]
 })
 export class CoreModule {
   constructor(@Optional() @SkipSelf() parentModule: CoreModule) {

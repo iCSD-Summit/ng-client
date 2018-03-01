@@ -1,2 +1,12 @@
-<ea-header></ea-header>
-<router-outlet></router-outlet>
+<div class="ea-container" [class.ea-is-mobile]="isMobile()">
+  <ea-header (toggleMenu)="sideNav.toggle()">Apps DE Summit 2018</ea-header>
+  <mat-sidenav-container class="ea-sidenav-container">
+    <mat-sidenav #sideNav [mode]="getModeByScreenSize()" [fixedInViewport]="isMobile()" fixedTopGap="56">
+      <ea-sidenav></ea-sidenav>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
+
