@@ -1,5 +1,10 @@
-<div class="ea-container" [class.ea-is-mobile]="isMobile()">
-  <ea-header (toggleMenu)="sideNav.toggle()">Apps DE Summit 2018</ea-header>
+<div class="ea-container" [class.ea-is-mobile]="isMobile()" xmlns="http://www.w3.org/1999/html">
+  <ea-header (toggleMenu)="sideNav.toggle()">
+    <div class="ea-header-title">
+      <div class="ea-header-title-part1 mat-caption"><div class="ea-header-title-part1-arch">Architects' &</div><div class="ea-header-title-part1-eng">Software Engineers'</div></div>
+      <div>Summit 2018</div>
+    </div>
+  </ea-header>
   <mat-sidenav-container class="ea-sidenav-container">
     <mat-sidenav #sideNav [mode]="getModeByScreenSize()" [fixedInViewport]="isMobile()" fixedTopGap="56">
       <ea-sidenav></ea-sidenav>
