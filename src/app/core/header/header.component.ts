@@ -1,4 +1,4 @@
-import {Component, OnInit, EventEmitter, Output} from "@angular/core";
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'ea-header',
@@ -10,7 +10,8 @@ export class HeaderComponent implements OnInit {
   @Output()
   toggleMenu: EventEmitter<any> = new EventEmitter<any>();
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }
