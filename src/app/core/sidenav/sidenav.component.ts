@@ -1,7 +1,7 @@
-import {Component, OnInit} from "@angular/core";
-import {NavItem} from "../model/nav-item";
-import {Router} from "@angular/router";
-import {NavService} from "../nav.service";
+import {Component, OnInit} from '@angular/core';
+import {NavItem} from '../model/nav-item';
+import {Router} from '@angular/router';
+import {NavService} from '../nav.service';
 
 @Component({
   selector: 'ea-sidenav',
@@ -19,7 +19,7 @@ export class SidenavComponent implements OnInit {
   ngOnInit() {
     this._navService.getNavItems().subscribe((navItems: NavItem[]) => {
       this.navItems = navItems;
-    })
+    });
   }
 
   navigateTo(navItem: NavItem): void {
