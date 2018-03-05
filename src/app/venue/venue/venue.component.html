@@ -1,10 +1,27 @@
-<section class="location">
-  <p class="mat-subheading-2">Hotel Mercure</p>
+<section class="hotel-info" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+  <p class="title mat-subheading-2"><mat-icon>hotel</mat-icon>&nbsp;<span>Hotel Mercure</span></p>
   <div class="address mat-body-1">
-    <p>pl. Dominikański 1</p>
-    <p>50-159 WROCŁAW</p>
-    <p>POLAND</p>
-    <p><a href="tel:+48-71-3232700"><mat-icon>phone</mat-icon> +48 71 3232700</a></p>
+    <p>
+      <a [href]="googleMapsUrl" target="_blank">
+        <div class="location">
+          <div>
+            <mat-icon>location_on</mat-icon>
+          </div>
+          <div class="address-details">
+            <span>pl. Dominikański 1</span>
+            <span>50-159 WROCŁAW</span>
+            <span>POLAND</span>
+          </div>
+        </div>
+      </a>
+    </p>
+    <p>
+      <a href="tel:+48-71-3232700" target="_blank">
+        <div class="phone">
+          <mat-icon>phone</mat-icon>&nbsp;<span>+48 71 3232700</span>
+        </div>
+      </a>
+    </p>
   </div>
 </section>
 <agm-map [latitude]="lat" [longitude]="lng">
