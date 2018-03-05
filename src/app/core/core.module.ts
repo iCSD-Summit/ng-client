@@ -26,7 +26,7 @@ import {AgmCoreModule} from "@agm/core";
         path: 'venue',
         component: VenueComponent
       },
-      {path: '', redirectTo: '/venue', pathMatch: 'full'}
+      {path: '', redirectTo: '/agenda', pathMatch: 'full'}
     ]),
     CustomMaterialModule
   ],
