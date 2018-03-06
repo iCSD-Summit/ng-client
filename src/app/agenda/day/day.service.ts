@@ -13,7 +13,7 @@ export class DayService {
     return 100 / streams.length;
   }
 
-  public getSlotsMap(timeSlots: TimeSlot[], streams: Stream[]): Map<string, TimeSlotGridItem[]> {
+  public getSlotsMap(timeSlots: TimeSlot[], streams: Stream[]): Object {
     const slots = chain(timeSlots)
       .sortBy((timeSlot: TimeSlot) => timeSlot.startTime)
       .groupBy((timeSlot: TimeSlot) => timeSlot.startTime)
@@ -31,7 +31,7 @@ export class DayService {
       }, {})
       .value();
 
-    return reduce(Object.keys(slots), (slotsMap, hour) => slotsMap.set(hour, slots[hour]), new Map());
+    return slots;
   }
 
   private resolveColSpan(streamIds: number[], streams: Stream[]): number {

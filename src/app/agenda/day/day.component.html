@@ -6,9 +6,9 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let hour of slotsMap.keys()">
+    <tr *ngFor="let hour of hours">
       <td width="80px" class="time">{{hour}}</td>
-      <td *ngFor="let timeSlotGridItem of slotsMap.get(hour)"
+      <td *ngFor="let timeSlotGridItem of slotsMap[hour]"
           [attr.colspan]="timeSlotGridItem.colSpan"
           [attr.rowspan]="timeSlotGridItem.rowSpan"
           [style.background]="timeSlotGridItem.color"
