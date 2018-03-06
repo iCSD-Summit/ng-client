@@ -1,8 +1,8 @@
-import {NgModule} from "@angular/core";
-import {MatSidenavModule} from "@angular/material/sidenav";
-import {MatListModule} from "@angular/material/list";
-import {LayoutModule} from "@angular/cdk/layout";
-import {MatToolbarModule, MatIconModule, MatButtonModule, MatTabsModule, MatGridListModule} from "@angular/material";
+import {NgModule} from '@angular/core';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatListModule} from '@angular/material/list';
+import {LayoutModule} from '@angular/cdk/layout';
+import {MatToolbarModule, MatIconModule, MatButtonModule, MatTabsModule, MatGridListModule} from '@angular/material';
 
 
 @NgModule({

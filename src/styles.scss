@@ -13,3 +13,7 @@ body {
 .mat-tab-label {
   min-width: 300px;
 }
+
+.mat-tab-group, .mat-tab-body-wrapper {
+  height: 100%;
+}

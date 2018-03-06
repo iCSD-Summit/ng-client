@@ -1,137 +1,20 @@
 <table class="ea-schedule-table">
-  <thead>
+  <thead *ngIf="streams.length > 0">
     <tr>
-      <th>&nbsp;</th>
-      <th width="33%" style="background: #0070ad">Hype</th>
-      <th width="33%" style="background: #ff304c">iCSD</th>
-      <th width="33%" style="background: #95e616">Tech</th>
+      <th width="80px">&nbsp;</th>
+      <th *ngFor="let stream of streams" [style.width.%]="columnWidthInPercentages" [style.background]="stream.color">{{stream.name}}</th>
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td class="time">9:30</td>
-      <td colspan="3" class="time-slot break-row"><h3 class="title">Registration & Coffee</h3></td>
-    </tr>
-    <tr>
-      <td class="time">10:00</td>
-      <td colspan="3" class="time-slot" style="background: #12b3db">
-        <h3 class="title">Welcome + Organisation</h3>
-        <p class="presenter">Marco Rose and Piotr Poprawski</p>
-        <p class="details">
-          <span class="event-detail hours">
-            <mat-icon>alarm</mat-icon>
-            <span class="icon-label">10:00 - 10:15</span>
-          </span>
-          <span class="event-detail room">
-            <mat-icon>home</mat-icon>
-            <span class="icon-label">Plenum</span>
-          </span>
-        </p>
-      </td>
-    </tr>
-    <tr>
-      <td class="time">10:15</td>
-      <td colspan="3" class="time-slot" style="background: #12b3db">
-        <h3 class="title">Hybrid Communities</h3>
-        <p class="presenter">Marco Rose</p>
-        <p class="details">
-          <span class="event-detail hours">
-            <mat-icon>alarm</mat-icon>
-            <span class="icon-label">10:15 - 10:40</span>
-          </span>
-          <span class="event-detail room">
-            <mat-icon>home</mat-icon>
-            <span class="icon-label">Plenum</span>
-          </span>
-        </p>
-      </td>
-    </tr>
-    <tr>
-      <td class="time">12:00</td>
-      <td colspan="3" class="time-slot break-row"><h3 class="title">Lunch</h3></td>
-    </tr>
-    <tr>
-      <td class="time">13:00</td>
-      <td class="time-slot" style="background: #0070ad">
-        <h3 class="title">Real Project AR/VR</h3>
-        <p class="details">
-          <span class="event-detail hours">
-            <mat-icon>alarm</mat-icon>
-            <span class="icon-label">13:00 - 13:45</span>
-          </span>
-          <span class="event-detail room">
-            <mat-icon>home</mat-icon>
-            <span class="icon-label">Conf-Rooms</span>
-          </span>
-        </p>
-      </td>
-      <td class="time-slot" style="background: #ff304c">
-        <h3 class="title">iCSD Devonfw</h3>
-        <p class="details">
-          <span class="event-detail hours">
-            <mat-icon>alarm</mat-icon>
-            <span class="icon-label">13:00 - 13:45</span>
-          </span>
-          <span class="event-detail room">
-            <mat-icon>home</mat-icon>
-            <span class="icon-label">Conf-Rooms</span>
-          </span>
-        </p>
-      </td>
-      <td class="time-slot" style="background: #95e616">
-        <h3 class="title">Agile Spec-Method</h3>
-        <p class="details">
-          <span class="event-detail hours">
-            <mat-icon>alarm</mat-icon>
-            <span class="icon-label">13:00 - 13:45</span>
-          </span>
-          <span class="event-detail room">
-            <mat-icon>home</mat-icon>
-            <span class="icon-label">Conf-Rooms</span>
-          </span>
-        </p>
-      </td>
-    </tr>
-    <tr>
-      <td class="time">13:45</td>
-      <td class="time-slot" style="background: #0070ad">
-        <h3 class="title">AI/ML</h3>
-        <p class="details">
-          <span class="event-detail hours">
-            <mat-icon>alarm</mat-icon>
-            <span class="icon-label">13:45 - 14:30</span>
-          </span>
-          <span class="event-detail room">
-            <mat-icon>home</mat-icon>
-            <span class="icon-label">Conf-Rooms</span>
-          </span>
-        </p>
-      </td>
-      <td class="time-slot" style="background: #ff304c">
-        <h3 class="title">iCSD ProdLine</h3>
-        <p class="details">
-          <span class="event-detail hours">
-            <mat-icon>alarm</mat-icon>
-            <span class="icon-label">13:45 - 14:30</span>
-          </span>
-          <span class="event-detail room">
-            <mat-icon>home</mat-icon>
-            <span class="icon-label">Conf-Rooms</span>
-          </span>
-        </p>
-      </td>
-      <td class="time-slot" style="background: #95e616">
-        <h3 class="title">Real Project Web</h3>
-        <p class="details">
-          <span class="event-detail hours">
-            <mat-icon>alarm</mat-icon>
-            <span class="icon-label">13:45 - 14:30</span>
-          </span>
-          <span class="event-detail room">
-            <mat-icon>home</mat-icon>
-            <span class="icon-label">Conf-Rooms</span>
-          </span>
-        </p>
+    <tr *ngFor="let hour of hours">
+      <td width="80px" class="time">{{hour}}</td>
+      <td *ngFor="let timeSlotGridItem of slotsMap[hour]"
+          [attr.colspan]="timeSlotGridItem.colSpan"
+          [attr.rowspan]="timeSlotGridItem.rowSpan"
+          [style.background]="timeSlotGridItem.color"
+          [class.break-row]="timeSlotGridItem.timeSlot.isBreak"
+          class="time-slot">
+        <ea-time-slot [timeSlot]="timeSlotGridItem.timeSlot"></ea-time-slot>
       </td>
     </tr>
   </tbody>

@@ -1,6 +1,6 @@
-import {NgModule} from "@angular/core";
-import {CommonModule} from "@angular/common";
-import {CustomMaterialModule} from "./custom-material.module";
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {CustomMaterialModule} from './custom-material.module';
 
 @NgModule({
   imports: [
