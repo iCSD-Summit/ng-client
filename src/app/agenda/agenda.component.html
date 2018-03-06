@@ -1,11 +1,5 @@
 <mat-tab-group color="accent">
-  <mat-tab label="Day One">
-    <ea-day></ea-day>
-  </mat-tab>
-  <mat-tab label="Day Two">
-    <ea-day></ea-day>
-  </mat-tab>
-  <mat-tab label="Day Three">
-    <ea-day></ea-day>
+  <mat-tab *ngFor="let day of agenda.days; let i = index" label="DAY {{i + 1}}">
+    <ea-day [day]="day"></ea-day>
   </mat-tab>
 </mat-tab-group>

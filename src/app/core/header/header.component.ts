@@ -10,8 +10,7 @@ export class HeaderComponent implements OnInit {
   @Output()
   toggleMenu: EventEmitter<any> = new EventEmitter<any>();
 
-  constructor() {
-  }
+  constructor() { }
 
   ngOnInit() {
   }

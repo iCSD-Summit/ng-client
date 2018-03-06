@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
+import {Agenda} from './model/agenda';
+import {AgendaService} from './agenda.service';
 
 @Component({
   selector: 'ea-agenda',
@@ -7,9 +10,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AgendaComponent implements OnInit {
 
-  constructor() { }
+  agenda: Agenda;
+
+  constructor(private route: ActivatedRoute, private agendaService: AgendaService) { }
 
   ngOnInit() {
+    this.agenda = this.route.snapshot.data['agenda'];
+    this.agendaService.setAgenda(this.agenda);
   }
 
 }
