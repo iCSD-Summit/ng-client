@@ -3,13 +3,14 @@ import {Agenda} from './model/agenda';
 import {Stream} from './model/stream';
 import {Presenter} from './model/presenter';
 import {Day} from './model/day';
-import {TimeSlot} from './model/time-slot';
-import {chain, value, map, flatten, sortBy, sortedUniq} from 'lodash';
+import {BasicComparator} from 'ts-comparators';
 
 @Injectable()
 export class AgendaService {
 
   private _agenda: Agenda;
+
+  private streamIdsComparator = new BasicComparator<number>();
 
   constructor() { }
 
@@ -18,6 +19,14 @@ export class AgendaService {
   }
 
   public setAgenda(agenda: Agenda) {
+
+    for (const day of agenda.days) {
+      for (const timeSlot of day.timeSlots) {
+        timeSlot.streams = timeSlot.streams || [];
+        timeSlot.streams.sort((stream1: number, stream2: number) => this.streamIdsComparator.compare(stream1, stream2));
+      }
+    }
+
     this._agenda = agenda;
   }
 
@@ -40,12 +49,19 @@ export class AgendaService {
   }
 
   public getStreamsForDay(day: Day): Stream[] {
-    const streamIds = chain(day.timeSlots)
-      .map((slot: TimeSlot) => slot.streams)
-      .flatten()
-      .sortBy(id => id)
-      .sortedUniq()
-      .value();
+    let streamIds = [];
+
+    for (const timeSlot of day.timeSlots) {
+      timeSlot.streams.reduce((streamIds: number[], streamId: number, index: number, slotStreams: number[]) => {
+        if (streamIds.indexOf(streamId) === -1) {
+          streamIds.push(streamId);
+        }
+        return streamIds;
+      }, streamIds);
+    }
+
+    streamIds.sort((stream1: number, stream2: number) => this.streamIdsComparator.compare(stream1, stream2));
+
     return this.findStreamsByIds(streamIds);
   }
 

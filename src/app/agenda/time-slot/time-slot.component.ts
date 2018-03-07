@@ -1,7 +1,6 @@
 import {Component, OnInit, Input} from '@angular/core';
 import {TimeSlot} from '../model/time-slot';
 import {AgendaService} from '../agenda.service';
-import {map, initial, last} from 'lodash';
 import {Presenter} from '../model/presenter';
 
 @Component({
@@ -26,11 +25,24 @@ export class TimeSlotComponent implements OnInit {
       return '';
     }
     if (typeof presenters !== 'string') {
-      const presentersNames = map(this.agendaService.findPresenetersByIds(presenters), (presenter: Presenter) => presenter.name);
-      return initial(presentersNames).join(', ') + (presentersNames.length > 1 ? ' and ' : '') + last(presentersNames);
-
+      let presentersNames = this.agendaService.findPresenetersByIds(presenters).map((presenter: Presenter) => presenter.name);
+      return this.concatPresentersNames(presentersNames);
     }
     return presenters;
+  }
+
+  private concatPresentersNames(presentersNames: string[]): string {
+    if (presentersNames.length === 0) {
+      return '';
+    }
+
+    let result = '';
+
+    if (presentersNames.length > 1) {
+      result += presentersNames.slice(0, presentersNames.length - 1).join(', ') + ' and ';
+    }
+    
+    return result + presentersNames[presentersNames.length - 1];
   }
 
 }
