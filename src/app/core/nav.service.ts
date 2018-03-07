@@ -10,7 +10,7 @@ export class NavService {
   constructor() {
     this._navItems = [];
 
-    const navItem2: NavItem = new NavItem('Agenda', '/agenda');
+    const navItem2: NavItem = new NavItem('Agenda', '/');
     this._navItems.push(navItem2);
 
     const navItem1: NavItem = new NavItem('Venue', '/venue');

@@ -23,7 +23,7 @@ import { AgendaResolve } from '../agenda/agenda.resolve';
     }),
     RouterModule.forRoot([
       {
-        path: 'agenda',
+        path: '',
         component: AgendaComponent,
         resolve: {
           agenda: AgendaResolve
@@ -33,7 +33,7 @@ import { AgendaResolve } from '../agenda/agenda.resolve';
         path: 'venue',
         component: VenueComponent
       },
-      {path: '', redirectTo: '/agenda', pathMatch: 'full'}
+      {path: '', redirectTo: '/', pathMatch: 'full'}
     ]),
     CustomMaterialModule
   ],
