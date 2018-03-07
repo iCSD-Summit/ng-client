@@ -29,4 +29,8 @@ export class AppComponent implements OnDestroy {
   ngOnDestroy(): void {
     this._mobileQuery.removeListener(this._mobileQueryListener);
   }
+
+  isNavigationOpened(): boolean {
+    return !this.isMobile();
+  }
 }

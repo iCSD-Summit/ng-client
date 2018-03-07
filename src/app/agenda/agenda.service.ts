@@ -3,7 +3,8 @@ import {Agenda} from './model/agenda';
 import {Stream} from './model/stream';
 import {Presenter} from './model/presenter';
 import {Day} from './model/day';
-import {BasicComparator} from 'ts-comparators';
+import {BasicComparator, ValueComparator} from 'ts-comparators';
+import {getCurrentDate, formatDateForDay} from '../shared/date-utils';
 
 @Injectable()
 export class AgendaService {
@@ -21,11 +22,16 @@ export class AgendaService {
   public setAgenda(agenda: Agenda) {
 
     for (const day of agenda.days) {
+      day.date = new Date(day.date);
+
       for (const timeSlot of day.timeSlots) {
         timeSlot.streams = timeSlot.streams || [];
         timeSlot.streams.sort((stream1: number, stream2: number) => this.streamIdsComparator.compare(stream1, stream2));
       }
     }
+
+    const daysComparator = new ValueComparator<Day, Date>(day => day.date, new BasicComparator<Date>());
+    agenda.days.sort((day1: Day, day2: Day) => daysComparator.compare(day1, day2));
 
     this._agenda = agenda;
   }
@@ -49,20 +55,32 @@ export class AgendaService {
   }
 
   public getStreamsForDay(day: Day): Stream[] {
-    let streamIds = [];
+    const streamIds = [];
 
     for (const timeSlot of day.timeSlots) {
-      timeSlot.streams.reduce((streamIds: number[], streamId: number, index: number, slotStreams: number[]) => {
-        if (streamIds.indexOf(streamId) === -1) {
-          streamIds.push(streamId);
+      timeSlot.streams.reduce((resultStreamIds: number[], streamId: number, index: number, slotStreams: number[]) => {
+        if (resultStreamIds.indexOf(streamId) === -1) {
+          resultStreamIds.push(streamId);
         }
-        return streamIds;
+        return resultStreamIds;
       }, streamIds);
     }
 
     streamIds.sort((stream1: number, stream2: number) => this.streamIdsComparator.compare(stream1, stream2));
 
     return this.findStreamsByIds(streamIds);
+  }
+
+  public getSelectedDayIndex(): number {
+    const currentDate = new Date(formatDateForDay(getCurrentDate()));
+    const selectedDayIndex = this.getAgenda().days.reduce((dayIndex: number, day: Day, currentIndex: number, days: Day[]) => {
+      if (currentDate >= day.date) {
+        return currentIndex;
+      }
+      return dayIndex;
+    }, 0);
+
+    return selectedDayIndex;
   }
 
 }

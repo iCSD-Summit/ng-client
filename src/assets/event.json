@@ -9,7 +9,7 @@
     "days": [
       {
         "id": 1,
-        "date": "15.03.2018",
+        "date": "2018-03-15",
         "timeSlots": [
           {
             "id": 101,
@@ -210,7 +210,7 @@
       },
       {
         "id": 2,
-        "date": "16.03.2018",
+        "date": "2018-03-16",
         "timeSlots": [
           {
             "id": 201,
@@ -320,7 +320,7 @@
       },
       {
         "id": 3,
-        "date": "17.03.2018",
+        "date": "2018-03-17",
         "description": "voluntary participation",
         "timeSlots": [
           {

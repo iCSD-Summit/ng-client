@@ -3,6 +3,8 @@ import {TimeSlot} from '../model/time-slot';
 import {Stream} from '../model/stream';
 import {TimeSlotGridItem} from './model/time-slot-grid-item';
 import {PropertyComparator, StringComparator, CustomComparator} from 'ts-comparators';
+import {Day} from '../model/day';
+import {getCurrentDate, formatDateForDay, formatDateForHour} from '../../shared/date-utils';
 
 @Injectable()
 export class DayService {
@@ -18,7 +20,7 @@ export class DayService {
       .then(new CustomComparator<TimeSlot>((value1: TimeSlot, value2: TimeSlot) => value1.streams[0] - value2.streams[0]));
     timeSlots.sort((slot1: TimeSlot, slot2: TimeSlot) => slotsComparator.compare(slot1, slot2));
 
-    let slotsMap = {};
+    const slotsMap = {};
 
     for (const timeSlot of timeSlots) {
       slotsMap[timeSlot.startTime] = slotsMap[timeSlot.startTime] || [];
@@ -48,6 +50,31 @@ export class DayService {
 
     const streamObj = streams.find((stream: Stream) => stream.id === streamIds[0]);
     return streamObj ? streamObj.color : '';
+  }
+
+  public isCurrentDay(day: Day): boolean {
+    const currentDate = formatDateForDay(getCurrentDate());
+    const checkedDate = formatDateForDay(day.date);
+    return checkedDate === currentDate;
+  }
+
+  public hasDayStarted(day: Day): boolean {
+    const currentHour = formatDateForHour(getCurrentDate());
+    const firstSlotHour = day.timeSlots[0].startTime;
+    return currentHour >= firstSlotHour;
+  }
+
+  public getCurrentTimeSlotHour(day: Day): string {
+    const currentDate = getCurrentDate();
+    const currentHour = formatDateForHour(currentDate);
+    const hour = day.timeSlots.reduce((resultHour: string, timeSlot: TimeSlot, currentIndex: number, timeSlots: TimeSlot[]) => {
+      if (currentHour >= timeSlot.startTime) {
+        return timeSlot.startTime;
+      }
+      return resultHour;
+    }, '');
+
+    return hour;
   }
 
 }

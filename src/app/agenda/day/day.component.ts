@@ -1,4 +1,4 @@
-import {Component, OnInit, Input} from '@angular/core';
+import {Component, OnInit, Input, ElementRef, ViewChild, AfterViewChecked} from '@angular/core';
 import {Day} from '../model/day';
 import {AgendaService} from '../agenda.service';
 import {Stream} from '../model/stream';
@@ -9,10 +9,14 @@ import {DayService} from './day.service';
   templateUrl: './day.component.html',
   styleUrls: ['./day.component.scss']
 })
-export class DayComponent implements OnInit {
+export class DayComponent implements OnInit, AfterViewChecked {
+
+  @ViewChild('dayTable')
+  dayTableElement: ElementRef;
 
   @Input()
   day: Day;
+
   streams: Stream[] = [];
   columnWidthInPercentages: number;
   hours: string[];
@@ -26,6 +30,24 @@ export class DayComponent implements OnInit {
     this.columnWidthInPercentages = this.dayService.calculateColumnWidthInPercentages(this.streams);
     this.slotsMap = this.dayService.getSlotsMap(this.day.timeSlots, this.streams);
     this.hours = Object.keys(this.slotsMap);
+  }
+
+  ngAfterViewChecked() {
+    if (this.dayService.isCurrentDay(this.day) && this.dayService.hasDayStarted(this.day)) {
+      const currentTimeSlotHour = this.dayService.getCurrentTimeSlotHour(this.day);
+      this.scrollToRow(this.getIdForTimeRow(currentTimeSlotHour));
+    }
+  }
+
+  private scrollToRow(rowId: string) {
+    const row = this.dayTableElement.nativeElement.querySelector(`[id="${rowId}"]`);
+    if (row) {
+      row.scrollIntoView();
+    }
+  }
+
+  getIdForTimeRow(hour: string) {
+    return hour.replace(':', '');
   }
 
 }

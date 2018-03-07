@@ -3,7 +3,7 @@ import {TimeSlot} from './time-slot';
 export class Day {
   private _id: number;
   private _name: string;
-  private _date: string;
+  private _date: Date;
   private _description: string;
   private _timeSlots: TimeSlot[];
 
@@ -23,11 +23,11 @@ export class Day {
     this._name = value;
   }
 
-  get date(): string {
+  get date(): Date {
     return this._date;
   }
 
-  set date(value: string) {
+  set date(value: Date) {
     this._date = value;
   }
 

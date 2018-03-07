@@ -25,7 +25,7 @@ export class TimeSlotComponent implements OnInit {
       return '';
     }
     if (typeof presenters !== 'string') {
-      let presentersNames = this.agendaService.findPresenetersByIds(presenters).map((presenter: Presenter) => presenter.name);
+      const presentersNames = this.agendaService.findPresenetersByIds(presenters).map((presenter: Presenter) => presenter.name);
       return this.concatPresentersNames(presentersNames);
     }
     return presenters;
@@ -41,7 +41,7 @@ export class TimeSlotComponent implements OnInit {
     if (presentersNames.length > 1) {
       result += presentersNames.slice(0, presentersNames.length - 1).join(', ') + ' and ';
     }
-    
+
     return result + presentersNames[presentersNames.length - 1];
   }
 

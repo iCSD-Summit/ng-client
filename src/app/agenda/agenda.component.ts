@@ -11,12 +11,16 @@ import {AgendaService} from './agenda.service';
 export class AgendaComponent implements OnInit {
 
   agenda: Agenda;
+  selectedTabIndex: number;
 
   constructor(private route: ActivatedRoute, private agendaService: AgendaService) { }
 
   ngOnInit() {
     this.agenda = this.route.snapshot.data['agenda'];
     this.agendaService.setAgenda(this.agenda);
+    this.selectedTabIndex = this.agendaService.getSelectedDayIndex();
   }
+
+
 
 }

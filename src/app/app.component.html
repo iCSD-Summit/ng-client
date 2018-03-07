@@ -6,7 +6,7 @@
     </div>
   </ea-header>
   <mat-sidenav-container class="ea-sidenav-container">
-    <mat-sidenav #sideNav [mode]="getModeByScreenSize()" [fixedInViewport]="isMobile()" fixedTopGap="56">
+    <mat-sidenav #sideNav [opened]="isNavigationOpened()" [mode]="getModeByScreenSize()" [fixedInViewport]="isMobile()" fixedTopGap="56">
       <ea-sidenav></ea-sidenav>
     </mat-sidenav>
     <mat-sidenav-content>
