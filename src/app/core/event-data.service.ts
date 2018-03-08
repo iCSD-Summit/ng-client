@@ -13,7 +13,7 @@ export class EventDataService {
   }
 
   private getEventAppData(): Observable<EventAppData> {
-    return this.http.get('/assets/event.json').pipe(
+    return this.http.get('api/event').pipe(
       map((data: any) => <EventAppData>data)
     );
   }
