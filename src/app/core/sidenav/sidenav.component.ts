@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Output, EventEmitter} from '@angular/core';
 import {NavItem} from '../model/nav-item';
 import {Router} from '@angular/router';
 import {NavService} from '../nav.service';
@@ -9,6 +9,9 @@ import {NavService} from '../nav.service';
   styleUrls: ['./sidenav.component.scss']
 })
 export class SidenavComponent implements OnInit {
+
+  @Output()
+  navigate: EventEmitter<any> = new EventEmitter<any>();
 
   navItems: NavItem[];
 
@@ -24,6 +27,7 @@ export class SidenavComponent implements OnInit {
 
   navigateTo(navItem: NavItem): void {
     this._router.navigate([navItem.url]);
+    this.navigate.emit();
   }
 
 }
