@@ -1,4 +1,4 @@
-<mat-tab-group color="accent" [selectedIndex]="selectedTabIndex">
+<mat-tab-group color="accent" [selectedIndex]="selectedTabIndex" (animationDone)="scrollToCurrentTime()">
   <mat-tab *ngFor="let day of agenda.days; let i = index" label="DAY {{i + 1}}">
     <ea-day [day]="day"></ea-day>
   </mat-tab>

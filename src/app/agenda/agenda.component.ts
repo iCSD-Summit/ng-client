@@ -1,7 +1,8 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChildren, QueryList} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {Agenda} from './model/agenda';
 import {AgendaService} from './agenda.service';
+import {DayComponent} from './day/day.component';
 
 @Component({
   selector: 'ea-agenda',
@@ -9,6 +10,9 @@ import {AgendaService} from './agenda.service';
   styleUrls: ['./agenda.component.scss']
 })
 export class AgendaComponent implements OnInit {
+
+  @ViewChildren(DayComponent)
+  dayComponents: QueryList<DayComponent>;
 
   agenda: Agenda;
   selectedTabIndex: number;
@@ -19,6 +23,10 @@ export class AgendaComponent implements OnInit {
     this.agenda = this.route.snapshot.data['agenda'];
     this.agendaService.setAgenda(this.agenda);
     this.selectedTabIndex = this.agendaService.getSelectedDayIndex();
+  }
+
+  scrollToCurrentTime() {
+    this.dayComponents.forEach((dayComponent: DayComponent) => dayComponent.afterDayTabChanged());
   }
 
 
