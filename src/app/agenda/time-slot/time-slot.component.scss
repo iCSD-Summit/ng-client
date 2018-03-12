@@ -1,17 +1,18 @@
 .title {
   margin: 0;
   font-weight: normal;
+  line-height: normal;
 }
 
-.presenter {
+.presenter, .description {
   margin: 0;
-  padding-top: 0.4em;
+  padding-top: 0.2em;
   font-size: 0.8em;
 }
 
 .details {
   margin: 0;
-  padding-top: 0.4em;
+  padding-top: 0.2em;
   display: flex;
   flex-direction: row;
   align-items: center;

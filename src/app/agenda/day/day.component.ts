@@ -50,4 +50,8 @@ export class DayComponent implements OnInit {
     return hour.replace(':', '');
   }
 
+  resolveTextColor(bgColor: string) {
+    return this.dayService.resolveTextColor(bgColor);
+  }
+
 }

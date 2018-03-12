@@ -4,13 +4,15 @@ export class TimeSlotGridItem {
   private _timeSlot: TimeSlot;
   private _rowSpan: number;
   private _colSpan: number;
-  private _color: string;
+  private _bgColor: string;
+  private _textColor: string;
 
-  constructor(timeSlot: TimeSlot, rowSpan: number, colSpan: number, color: string) {
+  constructor(timeSlot: TimeSlot, rowSpan: number, colSpan: number, bgColor: string, textColor: string) {
     this._timeSlot = timeSlot;
     this._colSpan = colSpan;
     this._rowSpan = rowSpan;
-    this._color = color;
+    this._bgColor = bgColor;
+    this._textColor = textColor;
   }
 
   get timeSlot(): TimeSlot {
@@ -37,11 +39,19 @@ export class TimeSlotGridItem {
     this._colSpan = value;
   }
 
-  get color(): string {
-    return this._color;
+  get bgColor(): string {
+    return this._bgColor;
   }
 
-  set color(value: string) {
-    this._color = value;
+  set bgColor(value: string) {
+    this._bgColor = value;
+  }
+
+  get textColor(): string {
+    return this._textColor;
+  }
+
+  set textColor(value: string) {
+    this._textColor = value;
   }
 }
