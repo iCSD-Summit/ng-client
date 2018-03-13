@@ -18,7 +18,7 @@ export class DayComponent implements OnInit {
   day: Day;
 
   streams: Stream[] = [];
-  columnWidthInPercentages: number = 100;
+  columnWidthInPercentages = 100;
   hours: string[] = [];
   slotsMap: Object = {};
 

@@ -51,7 +51,7 @@ export class DayService {
     if (slotItems.length === 0) {
       return 0;
     }
-    return slotItems.reduce((previousValue: number, currentSlotItem: TimeSlotGridItem, index, slotItems) => {
+    return slotItems.reduce((previousValue: number, currentSlotItem: TimeSlotGridItem, index, slotItemsArray) => {
       return previousValue + currentSlotItem.colSpan;
     }, 0);
   }

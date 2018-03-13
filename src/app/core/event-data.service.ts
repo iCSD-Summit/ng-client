@@ -32,7 +32,7 @@ export class EventDataService {
       status: error.status,
       message: error.message
     });
-  };
+  }
 
   getCachedEventAppData(): Observable<EventAppData> {
     if (!this.cachedEventData$) {
