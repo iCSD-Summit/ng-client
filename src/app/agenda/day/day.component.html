@@ -14,7 +14,7 @@
   </thead>
   <tbody>
     <tr *ngFor="let hour of hours" [id]="getIdForTimeRow(hour)">
-      <td width="80px" class="time">{{hour}}</td>
+      <td width="80px" class="time" [attr.rowspan]="calculateRowSpanForHour(hour)" *ngIf="shouldDisplayHourCell(hour)">{{hour}}</td>
       <td *ngFor="let timeSlotGridItem of slotsMap[hour]"
           [attr.colspan]="timeSlotGridItem.colSpan"
           [attr.rowspan]="timeSlotGridItem.rowSpan"

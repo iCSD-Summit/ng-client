@@ -19,21 +19,29 @@ export class AgendaService {
     return this._agenda;
   }
 
-  public setAgenda(agenda: Agenda) {
-
-    for (const day of agenda.days) {
-      day.date = new Date(day.date);
-
-      for (const timeSlot of day.timeSlots) {
-        timeSlot.streams = timeSlot.streams || [];
-        timeSlot.streams.sort((stream1: number, stream2: number) => this.streamIdsComparator.compare(stream1, stream2));
-      }
-    }
-
-    const daysComparator = new ValueComparator<Day, Date>(day => day.date, new BasicComparator<Date>());
-    agenda.days.sort((day1: Day, day2: Day) => daysComparator.compare(day1, day2));
-
+  public prepareAndSetAgenda(agenda: Agenda) {
+    this.prepareAgendaForProcessing(agenda);
     this._agenda = agenda;
+  }
+
+  private prepareAgendaForProcessing(agenda: Agenda) {
+    if (this.isValidAgenda(agenda)) {
+      for (const day of agenda.days) {
+        day.date = new Date(day.date);
+
+        for (const timeSlot of day.timeSlots) {
+          timeSlot.streams = timeSlot.streams || [];
+          timeSlot.streams.sort((stream1: number, stream2: number) => this.streamIdsComparator.compare(stream1, stream2));
+        }
+      }
+
+      const daysComparator = new ValueComparator<Day, Date>(day => day.date, new BasicComparator<Date>());
+      agenda.days.sort((day1: Day, day2: Day) => daysComparator.compare(day1, day2));
+    }
+  }
+
+  public isValidAgenda(agenda: Agenda): boolean {
+    return agenda && agenda.days && agenda.days.length > 0;
   }
 
   public findStreamById(streamId: number): Stream {
@@ -73,12 +81,16 @@ export class AgendaService {
 
   public getSelectedDayIndex(): number {
     const currentDate = new Date(formatDateForDay(getCurrentDate()));
-    const selectedDayIndex = this.getAgenda().days.reduce((dayIndex: number, day: Day, currentIndex: number, days: Day[]) => {
-      if (currentDate >= day.date) {
-        return currentIndex;
-      }
-      return dayIndex;
-    }, 0);
+    let selectedDayIndex = 0;
+
+    if (this.getAgenda() && this.getAgenda().days) {
+      selectedDayIndex = this.getAgenda().days.reduce((dayIndex: number, day: Day, currentIndex: number, days: Day[]) => {
+        if (currentDate >= day.date) {
+          return currentIndex;
+        }
+        return dayIndex;
+      }, 0);
+    }
 
     return selectedDayIndex;
   }

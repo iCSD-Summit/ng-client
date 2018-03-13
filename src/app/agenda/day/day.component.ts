@@ -18,9 +18,9 @@ export class DayComponent implements OnInit {
   day: Day;
 
   streams: Stream[] = [];
-  columnWidthInPercentages: number;
-  hours: string[];
-  slotsMap: Object;
+  columnWidthInPercentages: number = 100;
+  hours: string[] = [];
+  slotsMap: Object = {};
 
   constructor(private agendaService: AgendaService, private dayService: DayService) {
   }
@@ -32,7 +32,7 @@ export class DayComponent implements OnInit {
     this.hours = Object.keys(this.slotsMap);
   }
 
-  public afterDayTabChanged() {
+  afterDayTabChanged() {
     if (this.dayService.isCurrentDay(this.day) && this.dayService.hasDayStarted(this.day)) {
       const currentTimeSlotHour = this.dayService.getCurrentTimeSlotHour(this.day);
       this.scrollToRow(this.getIdForTimeRow(currentTimeSlotHour));
@@ -46,12 +46,20 @@ export class DayComponent implements OnInit {
     }
   }
 
-  getIdForTimeRow(hour: string) {
+  getIdForTimeRow(hour: string): string {
     return hour.replace(':', '');
   }
 
-  resolveTextColor(bgColor: string) {
+  resolveTextColor(bgColor: string): string {
     return this.dayService.resolveTextColor(bgColor);
+  }
+
+  calculateRowSpanForHour(hour: string): number {
+    return this.hours.filter((hourKey) => hourKey.startsWith(hour)).length;
+  }
+
+  shouldDisplayHourCell(hour: string): boolean {
+    return hour.indexOf('_') === -1;
   }
 
 }
