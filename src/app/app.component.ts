@@ -13,7 +13,7 @@ export class AppComponent implements OnDestroy {
   private _mobileQueryListener: (e: MediaQueryList) => void;
 
   constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher) {
-    this._mobileQuery = media.matchMedia('(max-width: 600px)');
+    this._mobileQuery = media.matchMedia('(max-width: 599px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this._mobileQuery.addListener(this._mobileQueryListener);
   }

@@ -11,23 +11,23 @@ import {DayService} from './day.service';
 })
 export class DayComponent implements OnInit {
 
-  @ViewChild('dayTable')
-  dayTableElement: ElementRef;
+  @ViewChild('dayGrid')
+  dayGridElement: ElementRef;
 
   @Input()
   day: Day;
 
   streams: Stream[] = [];
-  columnWidthInPercentages = 100;
   hours: string[] = [];
   slotsMap: Object = {};
+  gridTemplateColumns = '1fr';
 
   constructor(private agendaService: AgendaService, private dayService: DayService) {
   }
 
   ngOnInit() {
     this.streams = this.agendaService.getStreamsForDay(this.day);
-    this.columnWidthInPercentages = this.dayService.calculateColumnWidthInPercentages(this.streams);
+    this.gridTemplateColumns = '1fr '.repeat(this.streams.length);
     this.slotsMap = this.dayService.getSlotsMap(this.day.timeSlots, this.streams);
     this.hours = Object.keys(this.slotsMap);
   }
@@ -40,7 +40,7 @@ export class DayComponent implements OnInit {
   }
 
   private scrollToRow(rowId: string) {
-    const row = this.dayTableElement.nativeElement.querySelector(`[id="${rowId}"]`);
+    const row = this.dayGridElement.nativeElement.querySelector(`[id="${rowId}"]`);
     if (row) {
       row.scrollIntoView();
     }
@@ -52,14 +52,6 @@ export class DayComponent implements OnInit {
 
   resolveTextColor(bgColor: string): string {
     return this.dayService.resolveTextColor(bgColor);
-  }
-
-  calculateRowSpanForHour(hour: string): number {
-    return this.hours.filter((hourKey) => hourKey.startsWith(hour)).length;
-  }
-
-  shouldDisplayHourCell(hour: string): boolean {
-    return hour.indexOf('_') === -1;
   }
 
 }

@@ -11,10 +11,6 @@ export class DayService {
 
   constructor() { }
 
-  public calculateColumnWidthInPercentages(streams: Stream[]): number {
-    return 100 / streams.length;
-  }
-
   public getSlotsMap(timeSlots: TimeSlot[], streams: Stream[]): Object {
     const slotsComparator = new PropertyComparator<TimeSlot, 'startTime'>('startTime', new StringComparator())
       .then(new CustomComparator<TimeSlot>((value1: TimeSlot, value2: TimeSlot) => value1.streams[0] - value2.streams[0]));
@@ -23,37 +19,17 @@ export class DayService {
     const slotsMap = {};
 
     for (const timeSlot of timeSlots) {
-      let mapKey = timeSlot.startTime;
-
-      slotsMap[mapKey] = slotsMap[mapKey] || [];
+      slotsMap[timeSlot.startTime] = slotsMap[timeSlot.startTime] || [];
 
       const rowSpan = 1;
       const colSpan = this.resolveColSpan(timeSlot.streams, streams);
       const bgColor = this.resolveBackgroundColor(timeSlot.streams, streams);
       const textColor = this.resolveTextColor(bgColor);
 
-      if (this.shouldAddRowForHour(slotsMap[mapKey], streams)) {
-        mapKey += '_' + timeSlot.id;
-        slotsMap[mapKey] = slotsMap[mapKey] || [];
-      }
-
-      slotsMap[mapKey].push(new TimeSlotGridItem(timeSlot, rowSpan, colSpan, bgColor, textColor));
+      slotsMap[timeSlot.startTime].push(new TimeSlotGridItem(timeSlot, rowSpan, colSpan, bgColor, textColor));
     }
 
     return slotsMap;
-  }
-
-  private shouldAddRowForHour(slotItems: TimeSlotGridItem[], streams: Stream[]): boolean {
-    return (streams.length === 0 && slotItems.length > 0) || (streams.length > 0 && this.getTotalCols(slotItems) >= streams.length);
-  }
-
-  private getTotalCols(slotItems: TimeSlotGridItem[]): number {
-    if (slotItems.length === 0) {
-      return 0;
-    }
-    return slotItems.reduce((previousValue: number, currentSlotItem: TimeSlotGridItem, index, slotItemsArray) => {
-      return previousValue + currentSlotItem.colSpan;
-    }, 0);
   }
 
   private resolveColSpan(streamIds: number[], streams: Stream[]): number {
