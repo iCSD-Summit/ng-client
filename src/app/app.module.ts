@@ -8,6 +8,7 @@ import { HttpModule } from '@angular/http';
 import { NgModule } from '@angular/core';
 import { environment } from '../environments/environment';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { StreamsModule } from './streams/streams.module';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
     CoreModule,
     SharedModule,
     AgendaModule,
+    StreamsModule,
     VenueModule
   ],
   providers: [],

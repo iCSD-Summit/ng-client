@@ -1,6 +1,7 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {CustomMaterialModule} from './custom-material.module';
+import {PresenterService} from './presenter.service';
 
 @NgModule({
   imports: [
@@ -11,7 +12,8 @@ import {CustomMaterialModule} from './custom-material.module';
   exports: [
     CommonModule,
     CustomMaterialModule
-  ]
+  ],
+  providers: [PresenterService]
 })
 export class SharedModule {
 }

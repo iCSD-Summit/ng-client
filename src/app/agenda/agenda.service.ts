@@ -10,6 +10,7 @@ import {getCurrentDate, formatDateForDay} from '../shared/date-utils';
 export class AgendaService {
 
   private _agenda: Agenda;
+  private _presenters: Presenter[];
 
   private streamIdsComparator = new BasicComparator<number>();
 
@@ -22,6 +23,14 @@ export class AgendaService {
   public prepareAndSetAgenda(agenda: Agenda) {
     this.prepareAgendaForProcessing(agenda);
     this._agenda = agenda;
+  }
+
+  public getPresenters(): Presenter[] {
+    return this._presenters;
+  }
+
+  public setPresenters(presenters: Presenter[]) {
+    this._presenters = presenters;
   }
 
   private prepareAgendaForProcessing(agenda: Agenda) {
@@ -44,22 +53,11 @@ export class AgendaService {
     return agenda && agenda.days && agenda.days.length > 0;
   }
 
-  public findStreamById(streamId: number): Stream {
-    return this.getAgenda().streams.find((stream: Stream) => stream.id === streamId);
-  }
-
   public findStreamsByIds(streamIds: number[]): Stream[] {
     if (!streamIds) {
       return [];
     }
     return this.getAgenda().streams.filter((stream: Stream) => streamIds.indexOf(stream.id) !== -1);
-  }
-
-  public findPresenetersByIds(presenterIds: number[]): Presenter[] {
-    if (!presenterIds) {
-      return [];
-    }
-    return this.getAgenda().presenters.filter((presenter: Presenter) => presenterIds.indexOf(presenter.id) !== -1);
   }
 
   public getStreamsForDay(day: Day): Stream[] {

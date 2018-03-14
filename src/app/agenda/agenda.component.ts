@@ -21,8 +21,10 @@ export class AgendaComponent implements OnInit {
   constructor(private route: ActivatedRoute, private agendaService: AgendaService) { }
 
   ngOnInit() {
-    this.agenda = this.route.snapshot.data['agenda'];
+    const agendaData = this.route.snapshot.data['agendaData'];
+    this.agenda = agendaData.agenda;
     this.agendaService.prepareAndSetAgenda(this.agenda);
+    this.agendaService.setPresenters(agendaData.presenters);
     this.selectedTabIndex = this.agendaService.getSelectedDayIndex();
     this.isAgendaAvailable = this.agendaService.isValidAgenda(this.agenda);
   }

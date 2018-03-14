@@ -11,9 +11,11 @@ import {VenueComponent} from '../venue/venue/venue.component';
 import {AgmCoreModule} from '@agm/core';
 import {EventDataService} from './event-data.service';
 import {HttpClientModule} from '@angular/common/http';
-import { AgendaResolve } from '../agenda/agenda.resolve';
-import { PushComponent } from './sidenav/push.component/push-notification.component';
+import {AgendaResolve} from '../agenda/agenda.resolve';
+import {PushComponent} from './sidenav/push.component/push-notification.component';
 import {PushService} from './sidenav/push.component/push-service';
+import {StreamsResolve} from '../streams/streams.resolve';
+import {StreamsComponent} from '../streams/streams.component';
 
 @NgModule({
   imports: [
@@ -28,7 +30,14 @@ import {PushService} from './sidenav/push.component/push-service';
         path: '',
         component: AgendaComponent,
         resolve: {
-          agenda: AgendaResolve
+          agendaData: AgendaResolve
+        }
+      },
+      {
+        path: 'streams',
+        component: StreamsComponent,
+        resolve: {
+          streamsData: StreamsResolve
         }
       },
       {

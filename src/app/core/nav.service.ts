@@ -13,6 +13,9 @@ export class NavService {
     const navItem2: NavItem = new NavItem('Agenda', '/');
     this._navItems.push(navItem2);
 
+    const navItem3: NavItem = new NavItem('Streams', '/streams');
+    this._navItems.push(navItem3);
+
     const navItem1: NavItem = new NavItem('Venue', '/venue');
     this._navItems.push(navItem1);
   }

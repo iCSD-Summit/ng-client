@@ -2,7 +2,14 @@ import {NgModule} from '@angular/core';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatListModule} from '@angular/material/list';
 import {LayoutModule} from '@angular/cdk/layout';
-import {MatToolbarModule, MatIconModule, MatButtonModule, MatTabsModule, MatGridListModule} from '@angular/material';
+import {
+  MatToolbarModule,
+  MatIconModule,
+  MatButtonModule,
+  MatTabsModule,
+  MatGridListModule,
+  MatCardModule
+} from '@angular/material';
 
 
 @NgModule({
@@ -17,6 +24,7 @@ import {MatToolbarModule, MatIconModule, MatButtonModule, MatTabsModule, MatGrid
     MatTabsModule,
     MatGridListModule,
     LayoutModule,
+    MatCardModule
   ],
   exports: [
     MatSidenavModule,
@@ -27,6 +35,7 @@ import {MatToolbarModule, MatIconModule, MatButtonModule, MatTabsModule, MatGrid
     MatTabsModule,
     MatGridListModule,
     LayoutModule,
+    MatCardModule
   ],
   providers: [
   ],

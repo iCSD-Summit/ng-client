@@ -1,7 +1,7 @@
 import {Component, OnInit, Input} from '@angular/core';
 import {TimeSlot} from '../model/time-slot';
 import {AgendaService} from '../agenda.service';
-import {Presenter} from '../model/presenter';
+import {PresenterService} from '../../shared/presenter.service';
 
 @Component({
   selector: 'ea-time-slot',
@@ -14,35 +14,10 @@ export class TimeSlotComponent implements OnInit {
   timeSlot: TimeSlot;
   presenters: string;
 
-  constructor(private agendaService: AgendaService) { }
+  constructor(private agendaService: AgendaService, private presenterService: PresenterService) { }
 
   ngOnInit() {
-    this.presenters = this.getDisplayablePresenters(this.timeSlot.presenters);
-  }
-
-  private getDisplayablePresenters(presenters: any): string {
-    if (!presenters) {
-      return '';
-    }
-    if (typeof presenters !== 'string') {
-      const presentersNames = this.agendaService.findPresenetersByIds(presenters).map((presenter: Presenter) => presenter.name);
-      return this.concatPresentersNames(presentersNames);
-    }
-    return presenters;
-  }
-
-  private concatPresentersNames(presentersNames: string[]): string {
-    if (presentersNames.length === 0) {
-      return '';
-    }
-
-    let result = '';
-
-    if (presentersNames.length > 1) {
-      result += presentersNames.slice(0, presentersNames.length - 1).join(', ') + ' and ';
-    }
-
-    return result + presentersNames[presentersNames.length - 1];
+    this.presenters = this.presenterService.getDisplayablePresenters(this.agendaService.getPresenters(), this.timeSlot.presenters);
   }
 
 }
