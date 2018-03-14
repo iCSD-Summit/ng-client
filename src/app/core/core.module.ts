@@ -12,6 +12,8 @@ import {AgmCoreModule} from '@agm/core';
 import {EventDataService} from './event-data.service';
 import {HttpClientModule} from '@angular/common/http';
 import { AgendaResolve } from '../agenda/agenda.resolve';
+import { PushComponent } from './sidenav/push.component/push-notification.component';
+import {PushService} from './sidenav/push.component/push-service';
 
 @NgModule({
   imports: [
@@ -37,9 +39,9 @@ import { AgendaResolve } from '../agenda/agenda.resolve';
     ]),
     CustomMaterialModule
   ],
-  declarations: [SidenavComponent, HeaderComponent],
-  exports: [RouterModule, SidenavComponent, HeaderComponent],
-  providers: [NavService, EventDataService]
+  declarations: [SidenavComponent, HeaderComponent, PushComponent],
+  exports: [RouterModule, SidenavComponent, HeaderComponent, PushComponent],
+  providers: [NavService, EventDataService, PushService]
 })
 export class CoreModule {
   constructor(@Optional() @SkipSelf() parentModule: CoreModule) {
