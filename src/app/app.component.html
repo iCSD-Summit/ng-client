@@ -1,4 +1,4 @@
-<div class="ea-container" [class.ea-is-mobile]="isMobile()" xmlns="http://www.w3.org/1999/html">
+<div class="ea-container" xmlns="http://www.w3.org/1999/html">
   <ea-header (toggleMenu)="sideNav.toggle()">
     <div class="ea-header-title">
       <div class="ea-header-title-part1 mat-caption"><div class="ea-header-title-part1-arch">Architects' &</div><div class="ea-header-title-part1-eng">Software Engineers'</div></div>
@@ -7,7 +7,7 @@
   </ea-header>
   <mat-sidenav-container class="ea-sidenav-container">
     <mat-sidenav #sideNav [opened]="isNavigationOpened()" [mode]="getModeByScreenSize()" [fixedInViewport]="isMobile()" fixedTopGap="56">
-      <ea-sidenav></ea-sidenav>
+      <ea-sidenav (navigate)="isMobile() && sideNav.close()"></ea-sidenav>
     </mat-sidenav>
     <mat-sidenav-content>
       <router-outlet></router-outlet>

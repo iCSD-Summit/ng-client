@@ -2,6 +2,7 @@
 
 .ea-toolbar {
   color: $ea-white;
+  z-index: 100;
 
   h1.app-name {
     margin: 0 1em;
@@ -19,8 +20,12 @@
   .fill-remaining-space {
     flex: 1 1 auto;
   }
+}
 
-  @media (max-width: 600px) {
+@media (max-width: 600px) {
+  .ea-toolbar {
+    position: fixed;
+
     h1.app-name {
       margin-left: 0.5em;
       font-size: 0.8em;

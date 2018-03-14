@@ -1,4 +1,4 @@
-import {Component, OnInit, Input, ElementRef, ViewChild, AfterViewChecked} from '@angular/core';
+import {Component, OnInit, Input, ElementRef, ViewChild} from '@angular/core';
 import {Day} from '../model/day';
 import {AgendaService} from '../agenda.service';
 import {Stream} from '../model/stream';
@@ -9,7 +9,7 @@ import {DayService} from './day.service';
   templateUrl: './day.component.html',
   styleUrls: ['./day.component.scss']
 })
-export class DayComponent implements OnInit, AfterViewChecked {
+export class DayComponent implements OnInit {
 
   @ViewChild('dayTable')
   dayTableElement: ElementRef;
@@ -18,9 +18,9 @@ export class DayComponent implements OnInit, AfterViewChecked {
   day: Day;
 
   streams: Stream[] = [];
-  columnWidthInPercentages: number;
-  hours: string[];
-  slotsMap: Object;
+  columnWidthInPercentages = 100;
+  hours: string[] = [];
+  slotsMap: Object = {};
 
   constructor(private agendaService: AgendaService, private dayService: DayService) {
   }
@@ -32,7 +32,7 @@ export class DayComponent implements OnInit, AfterViewChecked {
     this.hours = Object.keys(this.slotsMap);
   }
 
-  ngAfterViewChecked() {
+  afterDayTabChanged() {
     if (this.dayService.isCurrentDay(this.day) && this.dayService.hasDayStarted(this.day)) {
       const currentTimeSlotHour = this.dayService.getCurrentTimeSlotHour(this.day);
       this.scrollToRow(this.getIdForTimeRow(currentTimeSlotHour));
@@ -46,8 +46,20 @@ export class DayComponent implements OnInit, AfterViewChecked {
     }
   }
 
-  getIdForTimeRow(hour: string) {
+  getIdForTimeRow(hour: string): string {
     return hour.replace(':', '');
+  }
+
+  resolveTextColor(bgColor: string): string {
+    return this.dayService.resolveTextColor(bgColor);
+  }
+
+  calculateRowSpanForHour(hour: string): number {
+    return this.hours.filter((hourKey) => hourKey.startsWith(hour)).length;
+  }
+
+  shouldDisplayHourCell(hour: string): boolean {
+    return hour.indexOf('_') === -1;
   }
 
 }

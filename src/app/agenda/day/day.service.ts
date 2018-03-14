@@ -23,16 +23,37 @@ export class DayService {
     const slotsMap = {};
 
     for (const timeSlot of timeSlots) {
-      slotsMap[timeSlot.startTime] = slotsMap[timeSlot.startTime] || [];
+      let mapKey = timeSlot.startTime;
+
+      slotsMap[mapKey] = slotsMap[mapKey] || [];
 
       const rowSpan = 1;
       const colSpan = this.resolveColSpan(timeSlot.streams, streams);
-      const color = this.resolveColor(timeSlot.streams, streams);
+      const bgColor = this.resolveBackgroundColor(timeSlot.streams, streams);
+      const textColor = this.resolveTextColor(bgColor);
 
-      slotsMap[timeSlot.startTime].push(new TimeSlotGridItem(timeSlot, rowSpan, colSpan, color));
+      if (this.shouldAddRowForHour(slotsMap[mapKey], streams)) {
+        mapKey += '_' + timeSlot.id;
+        slotsMap[mapKey] = slotsMap[mapKey] || [];
+      }
+
+      slotsMap[mapKey].push(new TimeSlotGridItem(timeSlot, rowSpan, colSpan, bgColor, textColor));
     }
 
     return slotsMap;
+  }
+
+  private shouldAddRowForHour(slotItems: TimeSlotGridItem[], streams: Stream[]): boolean {
+    return (streams.length === 0 && slotItems.length > 0) || (streams.length > 0 && this.getTotalCols(slotItems) >= streams.length);
+  }
+
+  private getTotalCols(slotItems: TimeSlotGridItem[]): number {
+    if (slotItems.length === 0) {
+      return 0;
+    }
+    return slotItems.reduce((previousValue: number, currentSlotItem: TimeSlotGridItem, index, slotItemsArray) => {
+      return previousValue + currentSlotItem.colSpan;
+    }, 0);
   }
 
   private resolveColSpan(streamIds: number[], streams: Stream[]): number {
@@ -43,13 +64,24 @@ export class DayService {
     return streamIds.length;
   }
 
-  private resolveColor(streamIds: number[], streams: Stream[]): string {
+  private resolveBackgroundColor(streamIds: number[], streams: Stream[]): string {
     if (streamIds.length !== 1) {
       return '';
     }
 
     const streamObj = streams.find((stream: Stream) => stream.id === streamIds[0]);
     return streamObj ? streamObj.color : '';
+  }
+
+  public resolveTextColor(bgColor: string): string {
+    return bgColor && this.getContrastYIQ(bgColor) < 128 ? 'white' : 'black';
+  }
+
+  private getContrastYIQ(hexcolor: string): number {
+    const red = parseInt(hexcolor.substr(1, 2), 16);
+    const green = parseInt(hexcolor.substr(3, 2), 16);
+    const blue = parseInt(hexcolor.substr(5, 2), 16);
+    return ((red * 299) + (green * 587) + (blue * 114)) / 1000;
   }
 
   public isCurrentDay(day: Day): boolean {

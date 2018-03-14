@@ -4,10 +4,10 @@ import {CoreModule} from './core/core.module';
 import {AgendaModule} from './agenda/agenda.module';
 import {SharedModule} from './shared/shared.module';
 import {VenueModule} from './venue/venue.module';
-import {ServiceWorkerModule} from '@angular/service-worker';
-import { environment } from '../environments/environment.prod';
 import { HttpModule } from '@angular/http';
 import { NgModule } from '@angular/core';
+import { environment } from '../environments/environment';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 @NgModule({
   declarations: [
@@ -15,8 +15,8 @@ import { NgModule } from '@angular/core';
   ],
   imports: [
     HttpModule,
-    environment.production ? ServiceWorkerModule.register('/ngsw-worker.js') : [],
     BrowserModule,
+    ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production }),
     CoreModule,
     SharedModule,
     AgendaModule,
