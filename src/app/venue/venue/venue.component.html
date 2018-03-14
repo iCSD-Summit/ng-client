@@ -1,31 +1,28 @@
-<section class="hotel-info" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
-  <p class="title mat-subheading-2"><mat-icon>hotel</mat-icon>&nbsp;<span>Hotel Mercure</span></p>
-  <div class="address mat-body-1">
-    <p>
-      <a href="https://www.google.com/maps/dir/?api=1&destination=Mercure+Wrocław+Centrum&destination_place_id=ChIJ4f2vj3fCD0cRM05-5W5lV5Y" target="_blank">
-        <div class="location">
-          <div>
-            <mat-icon>directions</mat-icon>&nbsp;
-          </div>
-          <div class="address-details">
-            <span>pl. Dominikański 1</span>
-            <span>50-159 WROCŁAW</span>
-            <span>POLAND</span>
-          </div>
-        </div>
+<div class="hotel-info-new">
+  <mat-card class="hotel-card">
+    <mat-card-header>
+      <mat-card-title><h2 class="mat-title">Hotel Mercure</h2></mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <p class="address mat-body-1">
+        <span>pl. Dominikański 1</span>
+        <span>50-159 WROCŁAW</span>
+        <span>POLAND</span>
+        <span>+48 71 3232700</span>
+      </p>
+    </mat-card-content>
+    <mat-card-actions>
+      <a mat-button href="https://www.google.com/maps/dir/?api=1&destination=Mercure+Wrocław+Centrum&destination_place_id=ChIJ4f2vj3fCD0cRM05-5W5lV5Y" target="_blank">
+        <mat-icon>directions</mat-icon><span class="icon-label">Navigate</span>
       </a>
-    </p>
-    <p>
-      <a href="tel:+48-71-3232700" target="_blank">
-        <div class="phone">
-          <mat-icon>phone</mat-icon>&nbsp;<span>+48 71 3232700</span>
-        </div>
+      <a mat-button href="tel:+48-71-3232700" target="_blank">
+        <mat-icon>phone</mat-icon><span class="icon-label">Call</span>
       </a>
-    </p>
-  </div>
-</section>
-<agm-map [latitude]="lat" [longitude]="lng">
-  <agm-marker [latitude]="lat" [longitude]="lng">
-    <agm-info-window>Hotel Mercure Wrocław</agm-info-window>
-  </agm-marker>
-</agm-map>
+    </mat-card-actions>
+  </mat-card>
+  <agm-map class="hotel-map" [latitude]="lat" [longitude]="lng">
+    <agm-marker [latitude]="lat" [longitude]="lng">
+      <agm-info-window>Hotel Mercure Wrocław</agm-info-window>
+    </agm-marker>
+  </agm-map>
+</div>
