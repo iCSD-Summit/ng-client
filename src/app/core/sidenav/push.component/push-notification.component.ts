@@ -21,6 +21,7 @@ export class PushComponent {
     constructor(
         private swPush: SwPush,
         private newsletterService: PushService) {            
+            
             this.pushButtonVisible = this.swPush.isEnabled;                                      
         }
 
