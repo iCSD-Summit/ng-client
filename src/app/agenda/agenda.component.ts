@@ -18,6 +18,11 @@ export class AgendaComponent implements OnInit {
   selectedTabIndex: number;
   isAgendaAvailable: boolean;
 
+  readonly SWIPE_ACTION = {
+    LEFT: 'LEFT',
+    RIGHT: 'RIGHT'
+  };
+
   constructor(private route: ActivatedRoute, private agendaService: AgendaService) { }
 
   ngOnInit() {
@@ -31,6 +36,27 @@ export class AgendaComponent implements OnInit {
 
   scrollToCurrentTime() {
     this.dayComponents.forEach((dayComponent: DayComponent) => dayComponent.afterDayTabChanged());
+  }
+
+  swipeTab(currentIndex: number, action: string): boolean {
+    if (currentIndex > this.agenda.days.length || currentIndex < 0) {
+      return false;
+    }
+
+    let nextTabIndex = 0;
+
+    if (action === this.SWIPE_ACTION.RIGHT) {
+      const isFirstTab = currentIndex === 0;
+      nextTabIndex = isFirstTab ? this.agenda.days.length - 1 : currentIndex - 1;
+    }
+
+    if (action === this.SWIPE_ACTION.LEFT) {
+      const isLastTab = currentIndex === this.agenda.days.length - 1;
+      nextTabIndex = isLastTab ? 0 : currentIndex + 1;
+    }
+
+    this.selectedTabIndex = nextTabIndex;
+    return true;
   }
 
 }
