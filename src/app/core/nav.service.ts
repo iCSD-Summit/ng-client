@@ -18,6 +18,15 @@ export class NavService {
 
     const navItem1: NavItem = new NavItem('Venue', '/venue');
     this._navItems.push(navItem1);
+
+    const navItem4: NavItem = new NavItem('Survey', 'https://builders.capgemini.com/readonline/survey.php?content_id=58157BBE-8890-37C1-40D9-1F220793A37B', true);
+    this._navItems.push(navItem4);
+
+    const navItem5: NavItem = new NavItem('Slides', 'https://troom.capgemini.com/sites/vcc/Shared%20Documents/CrossCuttingContent/ConferencesEvents/Events/APPSEvolveSummits/Summit2018/Conference', true);
+    this._navItems.push(navItem5);
+
+    const navItem6: NavItem = new NavItem('Pictures (via VPN)', 'https://troom.capgemini.com/sites/vcc/Shared%20Documents/CrossCuttingContent/ConferencesEvents/Events/APPSEvolveSummits/Summit2018/Pictures', true);
+    this._navItems.push(navItem6);
   }
 
   getNavItems(): Observable<NavItem[]> {

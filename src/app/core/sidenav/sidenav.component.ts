@@ -26,7 +26,11 @@ export class SidenavComponent implements OnInit {
   }
 
   navigateTo(navItem: NavItem): void {
-    this._router.navigate([navItem.url]);
+    if (navItem.external) {
+      window.open(navItem.url, '_blank');
+    } else {
+      this._router.navigate([navItem.url]);
+    }
     this.navigate.emit();
   }
 

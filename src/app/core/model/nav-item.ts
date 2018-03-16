@@ -1,10 +1,12 @@
 export class NavItem {
   private _label: string;
   private _url: string;
+  private _external = false;
 
-  constructor(label: string, url: string) {
+  constructor(label: string, url: string, external?: boolean) {
     this._label = label;
     this._url = url;
+    this._external = external;
   }
 
   get label(): string {
@@ -21,5 +23,13 @@ export class NavItem {
 
   set url(value: string) {
     this._url = value;
+  }
+
+  get external(): boolean {
+    return this._external;
+  }
+
+  set external(value: boolean) {
+    this._external = value;
   }
 }
