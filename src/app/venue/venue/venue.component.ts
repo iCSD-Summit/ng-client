@@ -6,8 +6,11 @@ import {Component} from '@angular/core';
   styleUrls: ['./venue.component.scss']
 })
 export class VenueComponent {
-  lat = 51.1086552;
-  lng = 17.0391495;
+  lat = 52.1001582;
+  lng = 5.0697159;
+
+  hotelLat =  52.091426;
+  hotelLng =  5.106626;
 
   constructor() {
   }

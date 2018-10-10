@@ -9,7 +9,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "sw-build-live": "ng build --prod --base-href https://summit-2018.azurewebsites.net/ && node build/sw-fix.js"
+    "sw-build-live": "ng build --prod --base-href https://icsd-summit.azurewebsites.net/ && node build/sw-fix.js"
   },
   "private": true,
   "dependencies": {
