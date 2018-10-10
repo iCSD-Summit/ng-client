@@ -1,5 +1,5 @@
-import {Component, ChangeDetectorRef, OnDestroy} from '@angular/core';
-import {MediaMatcher} from '@angular/cdk/layout';
+import { Component, ChangeDetectorRef, OnDestroy } from '@angular/core';
+import { MediaMatcher } from '@angular/cdk/layout';
 
 @Component({
   selector: 'ea-root',
@@ -13,7 +13,7 @@ export class AppComponent implements OnDestroy {
   private _mobileQueryListener: (e: MediaQueryList) => void;
 
   constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher) {
-    this._mobileQuery = media.matchMedia('(max-width: 599px)');
+    this._mobileQuery = media.matchMedia('(max-width: 1000px)'); // was on 599.
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this._mobileQuery.addListener(this._mobileQueryListener);
   }

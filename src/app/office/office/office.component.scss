@@ -1,0 +1,55 @@
+.office-container {
+  padding: 18px;
+}
+
+.office-card {
+  margin: 0;
+  text-align: center;
+  height: auto;
+
+  .mat-card-header {
+    justify-content: center;
+  }
+
+  .address {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .icon-label {
+    margin-left: 0.3em;
+    text-transform: uppercase;
+  }
+
+  .mat-card-actions {
+    padding: 0;
+  }
+  .map-container {
+    width: 100%;
+    height: auto;
+  }
+
+  .map-img {
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    border-radius: 2px;
+  }
+
+  .map-img-rotated {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .map-img {
+    display: none;
+  }
+
+  .map-img-rotated {
+    border-radius: 2px;
+    width: 100%;
+    height: auto;
+    display: block !important;
+  }
+}

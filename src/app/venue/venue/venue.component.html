@@ -1,50 +1,71 @@
 <div class="hotel-info-new">
-  <mat-card class="hotel-card">
-    <mat-card-header>
-      <mat-card-title><h2 class="mat-title">Capgemini Academy</h2></mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-      <p class="address mat-body-1">
-        <span>Reykjavikplein 1, 3543 KA Utrecht, The Netherlands, +31 30 689 0000</span>
-      </p>
-      <agm-map class="hotel-map" [latitude]="lat" [longitude]="lng">
-        <agm-marker [latitude]="lat" [longitude]="lng">
-          <agm-info-window>Capgemini Academy</agm-info-window>
-        </agm-marker>
-      </agm-map>
-    </mat-card-content>
-    <mat-card-actions>
-      <a mat-button href="https://www.google.com/maps/dir/?api=1&destination=Capgemini+Academy&destination_place_id=ChIJyc9M8pllxkcREvXfHZmuqlQ" target="_blank">
-        <mat-icon>directions</mat-icon><span class="icon-label">Navigate</span>
-      </a>
-      <a mat-button href="tel:+31-30-689-0000" target="_blank">
-        <mat-icon>phone</mat-icon><span class="icon-label">Call</span>
-      </a>
-    </mat-card-actions>
-  </mat-card>
+  <!-- Hotel one -->
+  <div class="hotel-container">
+    <!-- Card -->
+    <mat-card class="hotel-card">
+      <mat-card-header>
+        <mat-card-title>
+          <h2 class="mat-title">Hotel Park Plaza</h2>
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p class="address mat-body-1">
+          <span>Westplein 50</span>
+          <span>3531 BL UTRECHT</span>
+          <span>NETHERLANDS</span>
+          <span>+31 30 292 5200</span>
+        </p>
+      </mat-card-content>
+      <mat-card-actions>
+        <a mat-button href="https://www.google.com/maps/dir/?api=1&destination=Park+Plaza+Utrecht,+Westplein&destination_place_id=ChIJVelBf2hvxkcRVl53oabtZ8U"
+          target="_blank">
+          <mat-icon>directions</mat-icon><span class="icon-label">Navigate</span>
+        </a>
+        <a mat-button href="tel:+31-30-292-5200" target="_blank">
+          <mat-icon>phone</mat-icon><span class="icon-label">Call</span>
+        </a>
+      </mat-card-actions>
+    </mat-card>
+    <!-- Map -->
+    <agm-map class="hotel-map" [latitude]="plazaLat" [longitude]="plazaLng">
+      <agm-marker [latitude]="plazaLat" [longitude]="plazaLng">
+        <agm-info-window>Hotel Park Plaza</agm-info-window>
+      </agm-marker>
+    </agm-map>
+  </div>
 
-  <mat-card class="hotel-card">
-    <mat-card-header>
-      <mat-card-title><h2 class="mat-title">Hotel Park Plaza Utrecht</h2></mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-      <p class="address mat-body-1">
-        <span>Westplein 50, 3531 BL Utrecht, The Netherlands, +31 30 292 5200</span>
-      </p>
-      <agm-map class="hotel-map" [latitude]="hotelLat" [longitude]="hotelLng">
-        <agm-marker [latitude]="lat" [longitude]="lng">
-          <agm-info-window>Park Plaza Utrecht</agm-info-window>
-        </agm-marker>
-      </agm-map>
-    </mat-card-content>
-    <mat-card-actions>
-      <a mat-button href="https://www.google.com/maps/dir/?api=1&destination=Park+Plaza+Utrecht&destination_place_id=ChIJVelBf2hvxkcRVl53oabtZ8U" target="_blank">
-        <mat-icon>directions</mat-icon><span class="icon-label">Navigate</span>
-      </a>
-      <a mat-button href="tel:+31 30 292 5200" target="_blank">
-        <mat-icon>phone</mat-icon><span class="icon-label">Call</span>
-      </a>
-    </mat-card-actions>
-  </mat-card>
-
+  <!-- Hotel two -->
+  <div class="hotel-container">
+    <!-- Card -->
+    <mat-card class="hotel-card">
+      <mat-card-header>
+        <mat-card-title>
+          <h2 class="mat-title">Hotel Bastion</h2>
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p class="address mat-body-1">
+          <span>Mauritiuslaan 1</span>
+          <span>3526 LD UTRECHT</span>
+          <span>NETHERLANDS</span>
+          <span>+31 30 287 1400</span>
+        </p>
+      </mat-card-content>
+      <mat-card-actions>
+        <a mat-button href="https://www.google.com/maps/dir/?api=1&destination=Bastion+Hotel+Utrecht&destination_place_id=ChIJJxaFSMBlxkcRGUJ8KVHsOp8"
+          target="_blank">
+          <mat-icon>directions</mat-icon><span class="icon-label">Navigate</span>
+        </a>
+        <a mat-button href="tel:+31-30-287-1400" target="_blank">
+          <mat-icon>phone</mat-icon><span class="icon-label">Call</span>
+        </a>
+      </mat-card-actions>
+    </mat-card>
+    <!-- Map -->
+    <agm-map class="hotel-map" [latitude]="bastionLat" [longitude]="bastionLng">
+      <agm-marker [latitude]="bastionLat" [longitude]="bastionLng">
+        <agm-info-window>Hotel Bastion</agm-info-window>
+      </agm-marker>
+    </agm-map>
+  </div>
 </div>

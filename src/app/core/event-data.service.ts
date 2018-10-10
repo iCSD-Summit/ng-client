@@ -1,28 +1,26 @@
-import {Injectable} from '@angular/core';
-import {HttpClient, HttpErrorResponse} from '@angular/common/http';
-import {Observable} from 'rxjs/Observable';
-import {map, publishReplay, refCount, catchError} from 'rxjs/operators';
-import {EventAppData} from '../model/event-app-data';
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Observable } from 'rxjs/Observable';
+import { map, publishReplay, refCount, catchError } from 'rxjs/operators';
+import { EventAppData } from '../model/event-app-data';
 
 @Injectable()
 export class EventDataService {
-
   private cachedEventData$: Observable<EventAppData>;
 
-  constructor(private http: HttpClient) {
-  }
+  constructor(private http: HttpClient) {}
 
   private getEventAppData(): Observable<EventAppData> {
-    return this.http.get('api/event').pipe(
-      map((data: any) => <EventAppData>data)
-    );
+    return this.http
+      .get('api/event')
+      .pipe(map((data: any) => <EventAppData>data));
   }
 
   private getAndCacheEventAppData(): Observable<EventAppData> {
     this.cachedEventData$ = this.getEventAppData().pipe(
       publishReplay(),
       refCount(),
-      catchError(this.handleError)
+      catchError(this.handleError),
     );
     return this.cachedEventData$;
   }
@@ -30,7 +28,7 @@ export class EventDataService {
   private handleError(error: HttpErrorResponse) {
     return Observable.of({
       status: error.status,
-      message: error.message
+      message: error.message,
     });
   }
 
@@ -40,5 +38,4 @@ export class EventDataService {
     }
     return this.cachedEventData$;
   }
-
 }

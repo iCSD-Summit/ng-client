@@ -8,7 +8,7 @@ import {
   MatButtonModule,
   MatTabsModule,
   MatGridListModule,
-  MatCardModule, MatProgressSpinnerModule
+  MatCardModule
 } from '@angular/material';
 
 
@@ -24,8 +24,7 @@ import {
     MatTabsModule,
     MatGridListModule,
     LayoutModule,
-    MatCardModule,
-    MatProgressSpinnerModule,
+    MatCardModule
   ],
   exports: [
     MatSidenavModule,
@@ -36,8 +35,7 @@ import {
     MatTabsModule,
     MatGridListModule,
     LayoutModule,
-    MatCardModule,
-    MatProgressSpinnerModule
+    MatCardModule
   ],
   providers: [
   ],

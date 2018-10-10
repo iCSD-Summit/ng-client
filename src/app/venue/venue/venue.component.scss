@@ -1,8 +1,15 @@
 .hotel-info-new {
   margin: 24px;
+  display: flex;
+  flex-direction: row;
+
+  .hotel-container {
+    flex: 1;
+    padding: 0 15px;
+  }
 
   .hotel-card {
-    margin: .5em 0;
+    margin: 0;
     text-align: center;
 
     .mat-card-header {
@@ -26,5 +33,28 @@
 }
 
 agm-map {
-  height: 300px;
+  height: 240px;
+}
+
+// Media query for iPad
+@media (max-width: 768px) {
+  .hotel-info-new {
+    margin-top: 5px;
+    flex-direction: column;
+    .hotel-container {
+      padding: 11px 0;
+    }
+  }
+}
+
+// Media query for large phone
+@media (max-width: 425px) and (orientation: portrait) {
+  .hotel-info-new {
+    .hotel-container {
+      padding: 15px 0;
+    }
+  }
+  agm-map {
+    display: none;
+  }
 }

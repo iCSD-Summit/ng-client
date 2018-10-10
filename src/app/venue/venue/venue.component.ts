@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'ea-venue',
@@ -6,11 +6,11 @@ import {Component} from '@angular/core';
   styleUrls: ['./venue.component.scss']
 })
 export class VenueComponent {
-  lat = 52.1001582;
-  lng = 5.0697159;
+  plazaLat = 52.091664;
+  plazaLng = 5.106806;
 
-  hotelLat =  52.091426;
-  hotelLng =  5.106626;
+  bastionLat = 52.057978;
+  bastionLng = 5.106846;
 
   constructor() {
   }
