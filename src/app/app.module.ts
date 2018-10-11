@@ -11,6 +11,22 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { StreamsModule } from './streams/streams.module';
 import { OfficeModule } from './office/office.module';
 
+import {
+  HammerGestureConfig,
+  HAMMER_GESTURE_CONFIG,
+} from '@angular/platform-browser';
+import * as Hammer from 'hammerjs';
+
+export class MyHammerConfig extends HammerGestureConfig {
+  buildHammer(element: HTMLElement) {
+    const mc = new Hammer(element, {
+      touchAction: 'pan-y',
+    });
+
+    return mc;
+  }
+}
+
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -26,7 +42,12 @@ import { OfficeModule } from './office/office.module';
     VenueModule,
     OfficeModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HAMMER_GESTURE_CONFIG,
+      useClass: MyHammerConfig,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
