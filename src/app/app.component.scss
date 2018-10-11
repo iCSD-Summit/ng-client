@@ -21,32 +21,39 @@
     align-items: center;
 
     .ea-header-title-part1 {
-      margin-right: .5em;
+      margin-right: 0.5em;
       display: flex;
+      flex: 1;
       flex-direction: column;
-      align-items: flex-end;
+      align-items: flex-start;
 
       div.ea-header-title-part1-arch {
-        margin-bottom: -.25em;
+        margin-bottom: -0.25em;
       }
       div.ea-header-title-part1-eng {
-        margin-top: -.25em;
+        margin-top: -0.25em;
       }
+    }
+    .logo {
+      margin: 0;
+      height: auto;
+      width: 100%;
+      max-width: 200px;
+      object-fit: contain;
+    }
+    .title {
+      flex: 1;
     }
   }
 }
 
 @media (max-width: 599px) {
   .ea-container {
-
     .ea-sidenav-container {
       /* When the sidenav is fixed, don't constrain the height of the sidenav container. This allows the
          `<body>` to be our scrolling element for mobile layouts. */
       flex: 1 0 auto;
       padding-top: $ea-toolbar-height-mobile;
     }
-
   }
 }
-
-
