@@ -19,7 +19,7 @@ export class NavService {
     const navItem1: NavItem = new NavItem('Venue', '/venue');
     this._navItems.push(navItem1);
 
-    const navItem7: NavItem = new NavItem('Office Location', '/office');
+    const navItem7: NavItem = new NavItem("Office's Map", '/office');
     this._navItems.push(navItem7);
 
     const navItem4: NavItem = new NavItem(
@@ -42,6 +42,13 @@ export class NavService {
       true,
     );
     this._navItems.push(navItem6);
+
+    const navItem8: NavItem = new NavItem(
+      'Official Website',
+      'https://troom.capgemini.com/sites/vcc/Wiki/iCSDSummit2018.aspx',
+      true,
+    );
+    this._navItems.push(navItem8);
   }
 
   getNavItems(): Observable<NavItem[]> {
