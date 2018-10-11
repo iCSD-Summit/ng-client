@@ -15,6 +15,12 @@
           <span>NETHERLANDS</span>
           <span>+31 30 292 5200</span>
         </p>
+        <!-- Map -->
+        <agm-map class="hotel-map" [latitude]="plazaLat" [longitude]="plazaLng" [zoom]="15">
+          <agm-marker [latitude]="plazaLat" [longitude]="plazaLng">
+            <agm-info-window>Hotel Park Plaza</agm-info-window>
+          </agm-marker>
+        </agm-map>
       </mat-card-content>
       <mat-card-actions>
         <a mat-button href="https://www.google.com/maps/dir/?api=1&destination=Park+Plaza+Utrecht,+Westplein&destination_place_id=ChIJVelBf2hvxkcRVl53oabtZ8U"
@@ -24,14 +30,28 @@
         <a mat-button href="tel:+31-30-292-5200" target="_blank">
           <mat-icon>phone</mat-icon><span class="icon-label">Call</span>
         </a>
+        <a (click)="toggle1()" mat-button>
+          <mat-icon>info</mat-icon><span class="icon-label">More info</span>
+        </a>
       </mat-card-actions>
+      <mat-card-footer *ngIf="info_hotel1">
+        <p>From the park plaza hotel it is 4 minutes walk to the Central Station (Utrecht Central Station)</p>
+        <ul>
+          <li> Walk to the south, in the direction of Jaarbeursplein.</li>
+          <li> Turn right to Jaarbeursplein.</li>
+          <li> Turn left to the Van Sijpesteijnkade.</li>
+          <li> Follow this route to the van Sijpestijntunnel.</li>
+          <li> Turn right.</li>
+          <li> You have arrived at Utrecht Centraal Station.</li>
+        </ul>
+        <p>Please buy yourself a retour (return) ticket to train station Utrecht Leidsche Rijn
+          Costs; € 4,60 for a return ticket, for 1 single trip € 2,30.</p>
+        <p>It will take 4 minutes by train from the Central Station
+          To Utrecht Leidsche Rijn.</p>
+
+      </mat-card-footer>
     </mat-card>
-    <!-- Map -->
-    <agm-map class="hotel-map" [latitude]="plazaLat" [longitude]="plazaLng">
-      <agm-marker [latitude]="plazaLat" [longitude]="plazaLng">
-        <agm-info-window>Hotel Park Plaza</agm-info-window>
-      </agm-marker>
-    </agm-map>
+
   </div>
 
   <!-- Hotel two -->
@@ -50,6 +70,12 @@
           <span>NETHERLANDS</span>
           <span>+31 30 287 1400</span>
         </p>
+        <!-- Map -->
+        <agm-map class="hotel-map" [latitude]="bastionLat" [longitude]="bastionLng" [zoom]="15">
+          <agm-marker [latitude]="bastionLat" [longitude]="bastionLng">
+            <agm-info-window>Hotel Bastion</agm-info-window>
+          </agm-marker>
+        </agm-map>
       </mat-card-content>
       <mat-card-actions>
         <a mat-button href="https://www.google.com/maps/dir/?api=1&destination=Bastion+Hotel+Utrecht&destination_place_id=ChIJJxaFSMBlxkcRGUJ8KVHsOp8"
@@ -59,13 +85,84 @@
         <a mat-button href="tel:+31-30-287-1400" target="_blank">
           <mat-icon>phone</mat-icon><span class="icon-label">Call</span>
         </a>
+        <a (click)="toggle2()" mat-button>
+          <mat-icon>info</mat-icon><span class="icon-label">More info</span>
+        </a>
       </mat-card-actions>
+      <mat-card-footer *ngIf="info_hotel2">
+        <p><b>There will leave a courteous bus from the hotel;</b></p>
+        <p><i>Thursday October 18 at 8.00 AM from the hotel tot the office</i></p>
+        <p><i>Friday October 19 at 7.45 AM from the hotel to the Office</i></p>
+        <p><i>Saturday October 20 at 8.00 AM to the office</i></p>
+        <p>For the return travel to the hotel from Capgemini office Leidsche Rijn:</p>
+
+        <ul>
+          <li> You can buy a bus ticket inside the bus. (make sure you have enough cash as the will not accept
+            creditcards).</li>
+          <li> Behind the Leidsche Rijn station is the bus station.</li>
+          <li> Take bus 37 to Central station.</li>
+          <li> Leave the bus at Jaarbeurszijde.</li>
+          <li> Take bus 77 to P&R Westraven.</li>
+          <li> Leave the bus at P&R Westraven stop.</li>
+          <li> From here it is 3 minutes walk to the hotel (see map).</li>
+          <li> Cross the Griffioenlaan over the Europabaan.</li>
+          <li> You will reach the Mauritiuslaan.</li>
+        </ul>
+
+      </mat-card-footer>
     </mat-card>
-    <!-- Map -->
-    <agm-map class="hotel-map" [latitude]="bastionLat" [longitude]="bastionLng">
-      <agm-marker [latitude]="bastionLat" [longitude]="bastionLng">
-        <agm-info-window>Hotel Bastion</agm-info-window>
-      </agm-marker>
-    </agm-map>
+
+
+  </div>
+
+  <!-- Restaurant -->
+  <div class="hotel-container">
+    <!-- Card -->
+    <mat-card class="hotel-card">
+      <mat-card-header>
+        <mat-card-title>
+          <h2 class="mat-title">Restaurant</h2>
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p class="address mat-body-1">
+          <span>City Castle Oudaen</span>
+          <span>Oudegracht 99</span>
+          <span>3511 AE UTRECHT</span>
+          <span>+31 30 208 0048</span>
+        </p>
+        <!-- Map -->
+        <agm-map class="hotel-map" [latitude]="restaurantLat" [longitude]="restaurantLng" [zoom]="15">
+          <agm-marker [latitude]="restaurantLat" [longitude]="restaurantLng">
+            <agm-info-window>City Castle Oudaen</agm-info-window>
+          </agm-marker>
+        </agm-map>
+      </mat-card-content>
+      <mat-card-actions>
+        <a mat-button href="https://www.google.com/maps/dir/?api=1&destination=Stadskasteel+Oudaen,+Oudegracht+99&destination_place_id=ChIJGy2KYkNvxkcRGMhcwuiD5mk"
+          target="_blank">
+          <mat-icon>directions</mat-icon><span class="icon-label">Navigate</span>
+        </a>
+        <a mat-button href="tel:+31-30-207-0048" target="_blank">
+          <mat-icon>phone</mat-icon><span class="icon-label">Call</span>
+        </a>
+        <a (click)="toggle3()" mat-button>
+          <mat-icon>info</mat-icon><span class="icon-label">More info</span>
+        </a>
+      </mat-card-actions>
+      <mat-card-footer *ngIf="info_restaurant">
+        <ul>
+          <li> Take the train from the Utrecht Leidsche Rijn trainstation to Utrecht Central station..</li>
+          <li> From there walk in the direction exit Catharijne single / Godebald direction..</li>
+          <li> Cross over on the Vredenburgplein.</li>
+          <li> Walk through the Drieharingenstraat ( three haringstreet).</li>
+          <li> You have reached the Oudegracht (street).</li>
+          <li> The City Castle Oudaen (stadskasteel) is in most famous City canalstreet of Utrecht called the
+            Oudegracht.</li>
+        </ul>
+
+      </mat-card-footer>
+    </mat-card>
+
   </div>
 </div>

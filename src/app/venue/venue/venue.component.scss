@@ -12,6 +12,11 @@
     margin: 0;
     text-align: center;
 
+    li {
+      text-align: start;
+      margin: 1em;
+    }
+
     .mat-card-header {
       justify-content: center;
     }
@@ -28,6 +33,9 @@
 
     .mat-card-actions {
       padding: 0;
+    }
+    .mat-card-footer {
+      padding: 1em;
     }
   }
 }
