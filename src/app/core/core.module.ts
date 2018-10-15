@@ -16,8 +16,8 @@ import { PushComponent } from './sidenav/push.component/push-notification.compon
 import { PushService } from './sidenav/push.component/push-service';
 import { StreamsResolve } from '../streams/streams.resolve';
 import { StreamsComponent } from '../streams/streams.component';
-
-import { OfficeComponent } from '../office/office/office.component';
+import { SupportComponent } from '../support/support/support.component';
+//import { OfficeComponent } from '../office/office/office.component';
 
 @NgModule({
   imports: [
@@ -46,9 +46,13 @@ import { OfficeComponent } from '../office/office/office.component';
         path: 'venue',
         component: VenueComponent,
       },
+      // {
+      //   path: 'office',
+      //   component: OfficeComponent,
+      // },
       {
-        path: 'office',
-        component: OfficeComponent,
+        path: 'support',
+        component: SupportComponent,
       },
       { path: '', redirectTo: '/', pathMatch: 'full' },
     ]),
