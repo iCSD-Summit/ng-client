@@ -6,9 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./venue.component.scss'],
 })
 export class VenueComponent {
-  private info_hotel1 = false;
-  private info_hotel2 = false;
-  private info_restaurant = false;
+  info_hotel1 = false;
+  info_hotel2 = false;
+  info_restaurant = false;
 
   plazaLat = 52.091664;
   plazaLng = 5.106806;

@@ -12,12 +12,11 @@ import { AgmCoreModule } from '@agm/core';
 import { EventDataService } from './event-data.service';
 import { HttpClientModule } from '@angular/common/http';
 import { AgendaResolve } from '../agenda/agenda.resolve';
-import { PushComponent } from './sidenav/push.component/push-notification.component';
-import { PushService } from './sidenav/push.component/push-service';
 import { StreamsResolve } from '../streams/streams.resolve';
 import { StreamsComponent } from '../streams/streams.component';
 import { SupportComponent } from '../support/support/support.component';
-//import { OfficeComponent } from '../office/office/office.component';
+import {SwPushSubBtnComponent} from './sw-push-sub-btn/sw-push-sub-btn.component';
+import {SubscriptionService} from './subscription.service';
 
 @NgModule({
   imports: [
@@ -58,9 +57,9 @@ import { SupportComponent } from '../support/support/support.component';
     ]),
     CustomMaterialModule,
   ],
-  declarations: [SidenavComponent, HeaderComponent, PushComponent],
-  exports: [RouterModule, SidenavComponent, HeaderComponent, PushComponent],
-  providers: [NavService, EventDataService, PushService],
+  declarations: [SidenavComponent, HeaderComponent, SwPushSubBtnComponent],
+  exports: [RouterModule, SidenavComponent, HeaderComponent, SwPushSubBtnComponent],
+  providers: [NavService, EventDataService, SubscriptionService],
 })
 export class CoreModule {
   constructor(
