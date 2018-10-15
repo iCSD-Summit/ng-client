@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SupportComponent } from './support/support.component';
-import { MatIconModule } from '@angular/material/icon';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
-  imports: [CommonModule, MatIconModule],
+  imports: [CommonModule, SharedModule],
   declarations: [SupportComponent],
 })
 export class SupportModule {}
