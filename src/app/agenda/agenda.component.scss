@@ -1,3 +1,11 @@
-.additionalInfo {
-  padding: 10px;
+.additional-info {
+  display: flex;
+  flex-direction: row;
+  .mat-icon {
+    flex: 0;
+    padding: 5%;
+  }
+  .additional-info-text {
+    padding: 10px;
+  }
 }
