@@ -19,7 +19,10 @@ export class NavService {
     const navItem1: NavItem = new NavItem('Venue', '/venue');
     this._navItems.push(navItem1);
 
-    const navItem9: NavItem = new NavItem('Clubbing', '/clubbing');
+    const navItem9: NavItem = new NavItem(
+      'Sightseeing & Clubbing',
+      '/clubbing',
+    );
     this._navItems.push(navItem9);
 
     // const navItem7: NavItem = new NavItem("Office's Map", '/office');
