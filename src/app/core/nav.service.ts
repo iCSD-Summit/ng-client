@@ -32,19 +32,19 @@ export class NavService {
     );
     this._navItems.push(navItem4);
 
-    const navItem5: NavItem = new NavItem(
-      'Slides',
-      'https://troom.capgemini.com/sites/vcc/Shared%20Documents/CrossCuttingContent/ConferencesEvents/Events/APPSEvolveSummits/Summit2018/Conference',
-      true,
-    );
-    this._navItems.push(navItem5);
+    // const navItem5: NavItem = new NavItem(
+    //   'Slides',
+    //   'https://troom.capgemini.com/sites/vcc/Shared%20Documents/CrossCuttingContent/ConferencesEvents/Events/APPSEvolveSummits/Summit2018/Conference',
+    //   true,
+    // );
+    // this._navItems.push(navItem5);
 
-    const navItem6: NavItem = new NavItem(
-      'Pictures (via VPN)',
-      'https://troom.capgemini.com/sites/vcc/Shared%20Documents/CrossCuttingContent/ConferencesEvents/Events/APPSEvolveSummits/Summit2018/Pictures',
-      true,
-    );
-    this._navItems.push(navItem6);
+    // const navItem6: NavItem = new NavItem(
+    //   'Pictures (via VPN)',
+    //   'https://troom.capgemini.com/sites/vcc/Shared%20Documents/CrossCuttingContent/ConferencesEvents/Events/APPSEvolveSummits/Summit2018/Pictures',
+    //   true,
+    // );
+    // this._navItems.push(navItem6);
   }
 
   getNavItems(): Observable<NavItem[]> {

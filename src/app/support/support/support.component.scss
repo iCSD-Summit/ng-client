@@ -3,7 +3,18 @@
 }
 
 .phoneNumber {
-  font-size: 25px;
+  font-size: 20px;
   text-align: center;
   font-weight: bold;
+}
+.mat-card-header {
+  justify-content: center;
+}
+.support-card {
+  margin: 0;
+  text-align: center;
+}
+
+.icon {
+  vertical-align: text-bottom;
 }
