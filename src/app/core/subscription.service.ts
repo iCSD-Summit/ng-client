@@ -15,8 +15,11 @@ export class SubscriptionService {
       .pipe(map(_ => null));
   }
 
-  doUnsubscribe(endpoint: string): Observable<void> {
-    return this.http.delete(`${this.URI}/${encodeURIComponent(endpoint)}`, {responseType: 'text'})
+  doUnsubscribe(endpointUrl: string): Observable<void> {
+    const endpointUrlElements = endpointUrl && endpointUrl.split('/');
+    const endpointKey = endpointUrlElements && endpointUrlElements.length > 0 ? endpointUrlElements[endpointUrlElements.length - 1] : '';
+
+    return this.http.delete(`${this.URI}/${encodeURIComponent(endpointKey)}`, {responseType: 'text'})
       .pipe(map(_ => null));
   }
 }
