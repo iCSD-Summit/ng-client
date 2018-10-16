@@ -3,10 +3,17 @@
   "assetGroups": [
     {
       "name": "app",
-      "installMode": "lazy",
+      "installMode": "prefetch",
       "resources": {
-        "files": ["/assets/favicon.ico", "/index.html"],
-        "versionedFiles": ["/*.bundle.css", "/*.bundle.js", "/*.chunk.js"]
+        "files": [
+          "/assets/favicon.ico",
+          "/index.html"
+        ],
+        "versionedFiles": [
+          "/*.bundle.css",
+          "/*.bundle.js",
+          "/*.chunk.js"
+        ]
       }
     },
     {
@@ -14,7 +21,9 @@
       "installMode": "lazy",
       "updateMode": "prefetch",
       "resources": {
-        "files": ["/assets/**"]
+        "files": [
+          "/assets/**"
+        ]
       }
     },
     {
@@ -30,7 +39,9 @@
   "dataGroups": [
     {
       "name": "api-freshness",
-      "urls": ["/api/event"],
+      "urls": [
+        "/api/event"
+      ],
       "cacheConfig": {
         "strategy": "freshness",
         "maxSize": 100,
