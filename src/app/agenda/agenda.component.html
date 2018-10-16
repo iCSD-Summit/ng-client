@@ -2,6 +2,9 @@
   <mat-tab *ngFor="let day of agenda.days; let i = index" label="DAY {{i + 1}}">
     <div (swipeleft)="swipeTab(i, SWIPE_ACTION.LEFT)" (swiperight)="swipeTab(i, SWIPE_ACTION.RIGHT)">
       <ea-day [day]="day"></ea-day>
+      <p *ngIf="i==2" class="mat-subheading-1 additionalInfo">**On Saturday there will be no train service between Capgemini office and Utrecht Central Station. The service will
+        be also interrupted for the trains to Rotterdam, Den Haag & Leiden. To get to these destinations special bus services
+        will be provide as alternative, and regular bus services in the area can also be used to get to Utrecht Central Station.</p>
     </div>
 
   </mat-tab>

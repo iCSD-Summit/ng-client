@@ -15,8 +15,9 @@ import { AgendaResolve } from '../agenda/agenda.resolve';
 import { StreamsResolve } from '../streams/streams.resolve';
 import { StreamsComponent } from '../streams/streams.component';
 import { SupportComponent } from '../support/support/support.component';
-import {SwPushSubBtnComponent} from './sw-push-sub-btn/sw-push-sub-btn.component';
-import {SubscriptionService} from './subscription.service';
+import { SwPushSubBtnComponent } from './sw-push-sub-btn/sw-push-sub-btn.component';
+import { SubscriptionService } from './subscription.service';
+import { ClubbingComponent } from '../clubbing/clubbing/clubbing.component';
 
 @NgModule({
   imports: [
@@ -53,12 +54,21 @@ import {SubscriptionService} from './subscription.service';
         path: 'support',
         component: SupportComponent,
       },
+      {
+        path: 'clubbing',
+        component: ClubbingComponent,
+      },
       { path: '', redirectTo: '/', pathMatch: 'full' },
     ]),
     CustomMaterialModule,
   ],
   declarations: [SidenavComponent, HeaderComponent, SwPushSubBtnComponent],
-  exports: [RouterModule, SidenavComponent, HeaderComponent, SwPushSubBtnComponent],
+  exports: [
+    RouterModule,
+    SidenavComponent,
+    HeaderComponent,
+    SwPushSubBtnComponent,
+  ],
   providers: [NavService, EventDataService, SubscriptionService],
 })
 export class CoreModule {

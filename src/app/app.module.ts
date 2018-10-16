@@ -11,7 +11,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { StreamsModule } from './streams/streams.module';
 import { OfficeModule } from './office/office.module';
 import { SupportModule } from './support/support.module';
-
+import { ClubbingModule } from './clubbing/clubbing.module';
 import {
   HammerGestureConfig,
   HAMMER_GESTURE_CONFIG,
@@ -43,6 +43,7 @@ export class MyHammerConfig extends HammerGestureConfig {
     VenueModule,
     OfficeModule,
     SupportModule,
+    ClubbingModule,
   ],
   providers: [
     {

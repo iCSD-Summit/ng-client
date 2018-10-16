@@ -19,11 +19,11 @@ export class NavService {
     const navItem1: NavItem = new NavItem('Venue', '/venue');
     this._navItems.push(navItem1);
 
+    const navItem9: NavItem = new NavItem('Clubbing', '/clubbing');
+    this._navItems.push(navItem9);
+
     // const navItem7: NavItem = new NavItem("Office's Map", '/office');
     // this._navItems.push(navItem7);
-
-    const navItem8: NavItem = new NavItem('Support', '/support');
-    this._navItems.push(navItem8);
 
     const navItem4: NavItem = new NavItem(
       'Survey',
@@ -32,6 +32,8 @@ export class NavService {
     );
     this._navItems.push(navItem4);
 
+    const navItem8: NavItem = new NavItem('Support', '/support');
+    this._navItems.push(navItem8);
     // const navItem5: NavItem = new NavItem(
     //   'Slides',
     //   'https://troom.capgemini.com/sites/vcc/Shared%20Documents/CrossCuttingContent/ConferencesEvents/Events/APPSEvolveSummits/Summit2018/Conference',
