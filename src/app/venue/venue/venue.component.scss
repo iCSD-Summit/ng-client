@@ -12,6 +12,13 @@
     margin: 0;
     text-align: center;
 
+    .card-title {
+      display: flex;
+      .directionIcon {
+        margin: auto auto auto 10px;
+      }
+    }
+
     li {
       text-align: start;
       margin: 1em;
